@@ -1,0 +1,559 @@
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand fixed-top top-menu">
+  <a class="navbar-brand" routerLink="/home">
+    <!-- Large logo -->
+    <img src="assets/img/large-logo.png" alt="Logo" class="large-logo">
+
+    <!-- Small logo -->
+    <img src="assets/img/small-logo.png" alt="Small Logo" class="small-logo">
+  </a>
+
+  <!-- Burger menu -->
+  <div class="burger-menu toggle-menu">
+    <span class="top-bar"></span>
+    <span class="middle-bar"></span>
+    <span class="bottom-bar"></span>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- Mega Menu -->
+    <ul class="left-nav d-none d-md-block navbar-nav">
+      <li class="nav-item dropdown mega-menu">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false">
+          <div class="mega-menu-btn">
+            Mega Menu
+            <i data-feather="chevron-down" class="icon"></i>
+          </div>
+        </a>
+
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-md-6">
+                <h5 class="title">Features</h5>
+                <a class="dropdown-item" href="ui-alerts.html">Alerts</a>
+                <a class="dropdown-item" href="ui-badges.html">Badges</a>
+                <a class="dropdown-item" href="ui-buttons.html">Buttons</a>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <h5 class="title">Features</h5>
+                <a class="dropdown-item" href="ui-cards.html">Cards</a>
+                <a class="dropdown-item" href="ui-dropdowns.html">Dropdowns</a>
+                <a class="dropdown-item" href="ui-forms.html">Forms</a>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <h5 class="title">Features</h5>
+                <a class="dropdown-item" href="ui-list-groups.html">List Groups</a>
+                <a class="dropdown-item" href="ui-modals.html">Modals</a>
+                <a class="dropdown-item" href="ui-progress-bars.html">Progress Bars</a>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <h5 class="title">Features</h5>
+                <a class="dropdown-item" href="ui-tables.html">Tables</a>
+                <a class="dropdown-item" href="ui-tabs.html">Tabs</a>
+                <a class="dropdown-item" target="_blank" href="signup.html">Signup</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Search form -->
+    <form class="nav-search-form d-none d-sm-block">
+      <input type="text" class="form-control" placeholder="Search...">
+      <button type="submit" class="search-success">
+        <i data-feather="search" class="icon"></i>
+      </button>
+    </form>
+
+    <!-- Right nav -->
+    <ul class="navbar-nav right-nav ml-auto">
+      <!-- Email Notification dropdown -->
+      <li class="nav-item dropdown message-box d-none d-sm-block">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false">
+          <div class="count-info">
+            <i data-feather="mail" class="icon"></i>
+            <span class="ci-number theme-bg">
+                                    <span class="ripple theme-bg"></span>
+                                    <span class="ripple theme-bg"></span>
+                                    <span class="ripple theme-bg"></span>
+                                </span>
+          </div>
+        </a>
+
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);">
+            <div class="message-item">
+              <div class="user-pic">
+                <img src="assets/img/user/1.jpg" alt="Profile" class="rounded-circle">
+                <span class="profile-status online"></span>
+              </div>
+              <div class="chat-content">
+                <span class="message-title">Aaron Rossi</span>
+                <span class="mail-desc">Just sent a new comment!</span>
+              </div>
+              <span class="time">0 seconds ago</span>
+            </div>
+          </a>
+
+          <a class="dropdown-item" href="javascript:void(0);">
+            <div class="message-item">
+              <div class="user-pic">
+                <img src="assets/img/user/2.jpg" alt="User Image" class="rounded-circle">
+                <span class="profile-status ofline"></span>
+              </div>
+              <div class="chat-content">
+                <span class="message-title">Marco Gomez</span>
+                <span class="mail-desc">Just sent a new comment!</span>
+              </div>
+              <span class="time">5 minutes ago</span>
+            </div>
+          </a>
+
+          <a class="dropdown-item" href="javascript:void(0);">
+            <div class="message-item">
+              <div class="user-pic">
+                <img src="assets/img/user/3.jpg" alt="User Image" class="rounded-circle">
+                <span class="profile-status away"></span>
+              </div>
+              <div class="chat-content">
+                <span class="message-title">Mitch Petty</span>
+                <span class="mail-desc">Just sent a new comment!</span>
+              </div>
+              <span class="time">9:00 AM</span>
+            </div>
+          </a>
+
+          <a class="dropdown-item" href="javascript:void(0);">
+            See all emails
+            <i data-feather="chevron-right" class="icon"></i>
+          </a>
+        </div>
+      </li>
+
+      <!-- Message Notification dropdown -->
+      <li class="message-box dropdown nav-item">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false">
+          <div class="count-info">
+            <i data-feather="bell" class="icon"></i>
+            <span class="ci-number">
+                                    <span class="ripple"></span>
+                                    <span class="ripple"></span>
+                                    <span class="ripple"></span>
+                                </span>
+          </div>
+        </a>
+
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="javascript:void(0);">
+            <div class="message-item">
+              <div class="user-pic">
+                <img src="assets/img/user/4.jpg" alt="User Image" class="rounded-circle">
+                <span class="profile-status online"></span>
+              </div>
+              <div class="chat-content">
+                <span class="message-title">Aaron Rossi</span>
+                <span class="mail-desc">Just sent a new comment!</span>
+              </div>
+              <span class="time">0 seconds ago</span>
+            </div>
+          </a>
+
+          <a class="dropdown-item" href="javascript:void(0);">
+            <div class="message-item">
+              <div class="user-pic">
+                <img src="assets/img/user/5.jpg" alt="User Image" class="rounded-circle">
+                <span class="profile-status ofline"></span>
+              </div>
+              <div class="chat-content">
+                <span class="message-title">Marco Gomez</span>
+                <span class="mail-desc">Just sent a new comment!</span>
+              </div>
+              <span class="time">5 minutes ago</span>
+            </div>
+          </a>
+
+          <a class="dropdown-item" href="javascript:void(0);">
+            <div class="message-item">
+              <div class="user-pic">
+                <img src="assets/img/user/6.jpg" alt="User Image" class="rounded-circle">
+                <span class="profile-status away"></span>
+              </div>
+              <div class="chat-content">
+                <span class="message-title">Mitch Petty</span>
+                <span class="mail-desc">
+                                            New order received!
+                                            <span class="amount">$250</span>
+                                        </span>
+              </div>
+              <span class="time">9:00 AM - 02-02-2019</span>
+            </div>
+          </a>
+
+          <a class="dropdown-item" href="javascript:void(0);">
+            Check all notifications
+            <i data-feather="chevron-right" class="icon"></i>
+          </a>
+        </div>
+      </li>
+
+      <!-- Profile dropdown -->
+      <li class="nav-item dropdown profile-nav-item">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false">
+          <div class="menu-profile">
+            <span class="name">Aaron Rossi</span>
+            <img src="assets/img/profile.jpg" alt="Profile Image" class="rounded-circle">
+          </div>
+        </a>
+
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="profile.html">
+            <i data-feather="user" class="icon"></i>
+            Profile
+          </a>
+          <a class="dropdown-item active" href="inbox.html">
+            <i data-feather="inbox" class="icon"></i>
+            Mailbox
+          </a>
+          <a class="dropdown-item" href="chat.html">
+            <i data-feather="help-circle" class="icon"></i>
+            Support
+          </a>
+          <a class="dropdown-item" href="profile-settings.html">
+            <i data-feather="settings" class="icon"></i>
+            Settings
+          </a>
+          <a class="dropdown-item" href="login.html">
+            <i data-feather="log-out" class="icon"></i>
+            Logout
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- End Top Navbar -->
+
+<!-- Side Menu -->
+<div class="sidemenu-area sidemenu-toggle default">
+  <nav class="sidemenu navbar navbar-expand navbar-light hide-nav-title">
+    <div class="navbar-collapse collapse">
+      <div class="navbar-nav">
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">
+            <div class="dropdown-title">
+              <i data-feather="grid" class="icon"></i>
+              <span class="title">
+                                        Dashboard
+                                        <i data-feather="chevron-right" class="icon fr"></i>
+                                    </span>
+            </div>
+          </a>
+
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="dashboard-sales.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Sales
+            </a>
+            <a class="dropdown-item" href="dashboard-ecommerce.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              eCommerce
+            </a>
+            <a class="dropdown-item" href="dashboard-analytics.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Analytics
+            </a>
+            <a class="dropdown-item" href="dashboard-crm.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              CRM
+            </a>
+            <a class="dropdown-item active" href="dashboard-projects.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Projects
+            </a>
+          </div>
+        </div>
+
+        <a class="nav-link" href="inbox.html">
+          <i data-feather="inbox" class="icon"></i>
+          <span class="title">Inbox</span>
+        </a>
+
+        <a class="nav-link" href="chat.html">
+          <i data-feather="message-square" class="icon"></i>
+          <span class="title">Chat</span>
+        </a>
+
+        <a class="nav-link" href="todos.html">
+          <i data-feather="check-square" class="icon"></i>
+          <span class="title">Todo List</span>
+        </a>
+
+        <a class="nav-link" href="notes.html">
+          <i data-feather="file-text" class="icon"></i>
+          <span class="title">Notes</span>
+        </a>
+
+        <a class="nav-link" href="calendar.html">
+          <i data-feather="calendar" class="icon"></i>
+          <span class="title">Calendar</span>
+        </a>
+
+        <a class="nav-link" href="search.html">
+          <i data-feather="search" class="icon"></i>
+          <span class="title">Search</span>
+        </a>
+
+        <div class="nav-item dropdown super-color">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">
+            <div class="dropdown-title">
+              <i data-feather="filter" class="icon"></i>
+              <span class="title">
+                                        UI Components
+                                        <i data-feather="chevron-right" class="icon fr"></i>
+                                    </span>
+            </div>
+          </a>
+
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="ui-alerts.html">
+              <i data-feather="bell" class="icon"></i>
+              Alerts
+            </a>
+
+            <a class="dropdown-item" href="ui-badges.html">
+              <i data-feather="award" class="icon"></i>
+              Badges
+            </a>
+
+            <a class="dropdown-item" href="ui-buttons.html">
+              <i data-feather="arrow-right-circle" class="icon"></i>
+              Buttons
+            </a>
+
+            <a class="dropdown-item" href="ui-cards.html">
+              <i data-feather="layers" class="icon"></i>
+              Cards
+            </a>
+
+            <a class="dropdown-item" href="ui-dropdowns.html">
+              <i data-feather="arrow-down-circle" class="icon"></i>
+              Dropdowns
+            </a>
+
+            <a class="dropdown-item" href="ui-forms.html">
+              <i data-feather="file-text" class="icon"></i>
+              Forms
+            </a>
+
+            <a class="dropdown-item" href="ui-list-groups.html">
+              <i data-feather="list" class="icon"></i>
+              List Groups
+            </a>
+
+            <a class="dropdown-item" href="ui-modals.html">
+              <i data-feather="airplay" class="icon"></i>
+              Modals
+            </a>
+
+            <a class="dropdown-item" href="ui-progress-bars.html">
+              <i data-feather="trending-up" class="icon"></i>
+              Progress Bars
+            </a>
+
+            <a class="dropdown-item" href="ui-tables.html">
+              <i data-feather="database" class="icon"></i>
+              Tables
+            </a>
+
+            <a class="dropdown-item" href="ui-tabs.html">
+              <i data-feather="triangle" class="icon"></i>
+              Tabs
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">
+            <div class="dropdown-title">
+              <i data-feather="user" class="icon"></i>
+              <span class="title">
+                                        User
+                                        <i data-feather="chevron-right" class="icon fr"></i>
+                                    </span>
+            </div>
+          </a>
+
+          <div class="dropdown-menu">
+            <a class="dropdown-item" target="_blank" href="signup.html">
+              <i data-feather="user-plus" class="icon"></i>
+              Sign Up
+            </a>
+
+            <a class="dropdown-item" target="_blank" href="login.html">
+              <i data-feather="user-check" class="icon"></i>
+              Login
+            </a>
+
+            <a class="dropdown-item" target="_blank" href="forgot-password.html">
+              <i data-feather="unlock" class="icon"></i>
+              Forgot Password
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">
+            <div class="dropdown-title">
+              <i data-feather="bar-chart-2" class="icon"></i>
+              <span class="title">
+                                        Charts
+                                        <i data-feather="chevron-right" class="icon fr"></i>
+                                    </span>
+            </div>
+          </a>
+
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="apex-line-charts.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Line Charts
+            </a>
+
+            <a class="dropdown-item" href="apex-area-charts.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Area Charts
+            </a>
+
+            <a class="dropdown-item" href="apex-column-charts.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Column Charts
+            </a>
+
+            <a class="dropdown-item" href="apex-bar-charts.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Bar Charts
+            </a>
+
+            <a class="dropdown-item" href="apex-mixed-charts.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Mixed Charts
+            </a>
+
+            <a class="dropdown-item" href="apex-pie-donuts-charts.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Pie and Donuts Charts
+            </a>
+          </div>
+        </div>
+
+        <div class="dropdown nav-item">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">
+            <div class="dropdown-title">
+              <i data-feather="heart" class="icon"></i>
+              <span class="title">
+                                        Icons
+                                        <i data-feather="chevron-right" class="icon fr"></i>
+                                    </span>
+            </div>
+          </a>
+
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="feather-icons.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Feather Icons
+            </a>
+            <a class="dropdown-item" href="lineicons.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Line Icons
+            </a>
+            <a class="dropdown-item" href="icofont-icons.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Icofont Icons
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">
+            <div class="dropdown-title">
+              <i data-feather="file-text" class="icon"></i>
+              <span class="title">
+                                        Pages
+                                        <i data-feather="chevron-right" class="icon fr"></i>
+                                    </span>
+            </div>
+          </a>
+
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="users-card.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Users Card
+            </a>
+
+            <a class="dropdown-item" href="notifications.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              <span class="title">Notifications</span>
+            </a>
+
+            <a class="dropdown-item" href="time-line.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Time line
+            </a>
+
+            <a class="dropdown-item" href="invoice-template.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Invoice Template
+            </a>
+
+            <a class="dropdown-item" href="gallery.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Gallery
+            </a>
+
+            <a class="dropdown-item" href="faq.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Faq
+            </a>
+
+            <a class="dropdown-item" href="pricing.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Pricing
+            </a>
+
+            <a class="dropdown-item" href="profile.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Profile
+            </a>
+
+            <a class="dropdown-item" href="profile-settings.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Profile Settings
+            </a>
+
+            <a class="dropdown-item" href="error-404.html">
+              <i data-feather="chevron-right" class="icon"></i>
+              Error 404
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- End Side Menu -->
+
+<!-- Theme Color customizer Right Modal -->
+
+
+<!-- End Theme Color customizer -->

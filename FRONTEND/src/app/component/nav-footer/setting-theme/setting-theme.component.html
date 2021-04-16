@@ -1,0 +1,41 @@
+<div class="customizer-toggle" data-toggle="modal" data-target="#ThemeColorCustomizer">
+  <i data-feather="settings" class="spin icon mt-minus-2"></i>
+</div>
+
+<div class="modal right color-customizer-modal fade" id="ThemeColorCustomizer">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel2">Theme Color Customizer</h4>
+      </div>
+
+      <div class="theme-switch">
+        <!--   light theme icon -->
+        <button class="icon-theme"
+                *ngIf="
+        (themeService.presentTheme$ | async) == 'theme-light';
+        else moonTemplate"
+                (click)="themeService.changeTheme('theme-dark')"
+        >
+          <img class="img-theme" s src="assets/img/icon/sunny.svg" alt="light mode"/>
+        </button>
+        <ng-template #moonTemplate>
+          <!--   dark theme icon -->
+          <button class="icon-theme"
+                  (click)="themeService.changeTheme('theme-light')"
+          >
+            <img class="img-theme" src="assets/img/icon/moon.svg" alt="dark mode"/>
+          </button>
+        </ng-template>
+        THEME
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
