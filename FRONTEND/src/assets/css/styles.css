@@ -10,7 +10,7 @@ This files table contents are outlined below >>>>>
 *******************************************
 *******************************************
 
-** - Default CSS   
+** - Default CSS
 ** - Body CSS
 ** - Typography
 ** - Navbar Area CSS
@@ -5420,5 +5420,9 @@ textarea.form-control {
 
 .timeline .timeline-list p {
   margin: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 /*# sourceMappingURL=styles.css.map */
