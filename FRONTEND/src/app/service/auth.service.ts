@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
 import {TokenStorageService} from './token-storage.service';
 import {environment} from '../../environments/environment';
+import {User} from '../model/User';
 
 const AUTH_API = environment.URL_API_AUTH;
 
@@ -16,10 +17,18 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
 
   constructor(
-              private http: HttpClient, public jwtHelper: JwtHelperService,
-              private tokenService: TokenStorageService) {
+    private http: HttpClient, public jwtHelper: JwtHelperService,
+    private tokenService: TokenStorageService) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(window.sessionStorage.getItem(environment.USER_KEY)));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  public currentUserValue(): User {
+    return JSON.parse(window.sessionStorage.getItem(environment.USER_KEY));
   }
 
   login(username: string, password: string): Observable<any> {

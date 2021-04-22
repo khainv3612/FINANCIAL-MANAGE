@@ -4,7 +4,7 @@ import {TokenStorageService} from '../../../service/token-storage.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ValidationService} from '../../../directive/ValidationService';
 import {environment} from '../../../../environments/environment';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {RouterService} from '../../router/router.service';
 
 @Component({
@@ -25,15 +25,17 @@ export class LoginComponent implements OnInit {
   TOKEN_KEY = environment.TOKEN_KEY;
   USER_KEY = environment.USER_KEY;
   isFirstLoad = true;
+  returnUrl: string;
 
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
-              private validate: ValidationService, private router: RouterService) {
+              private validate: ValidationService, private router: RouterService, private route: ActivatedRoute) {
     this.validateService = validate;
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
     });
+    this.returnUrl = this.route.snapshot.paramMap.get('returnUrl') || '/home';
   }
 
   ngOnInit(): void {
@@ -63,7 +65,7 @@ export class LoginComponent implements OnInit {
           window.localStorage.setItem('isRememberMe', String(true));
           window.localStorage.setItem(this.USER_KEY, JSON.stringify(data));
         }
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl(this.returnUrl);
       },
       err => {
         this.errorMessage = err.error.message;

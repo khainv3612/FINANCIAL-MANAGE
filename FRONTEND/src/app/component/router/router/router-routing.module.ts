@@ -9,10 +9,11 @@ import {
 import {RegisterSuccesComponent} from '../../auth/register-succes/register-succes.component';
 import {ErrorPageComponent} from '../../auth/error-page/error-page.component';
 import {RegisterExpiredComponent} from '../../auth/register-expired/register-expired.component';
+import {Role} from '../../../model/Role';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'profile', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: HomeComponent, canActivate: [AuthGuard], data: {roles: [Role.Admin]}},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},

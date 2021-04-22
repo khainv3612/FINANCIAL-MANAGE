@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-error-page',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./error-page.component.css']
 })
 export class ErrorPageComponent implements OnInit {
+  title: string;
 
-  constructor() { }
+  constructor(private router: ActivatedRoute) {
+    if (this.router.snapshot.paramMap.get('title')) {
+      this.title = this.router.snapshot.paramMap.get('title');
+    }
+  }
 
   ngOnInit(): void {
   }

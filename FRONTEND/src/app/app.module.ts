@@ -16,10 +16,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthGuardService} from './service/auth-guard.service';
 import {JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
-import { TaskBarComponent } from './component/nav-footer/task-bar/task-bar.component';
-import { RegisterSuccesComponent } from './component/auth/register-succes/register-succes.component';
-import { ErrorPageComponent } from './component/auth/error-page/error-page.component';
-import { RegisterExpiredComponent } from './component/auth/register-expired/register-expired.component';
+import {TaskBarComponent} from './component/nav-footer/task-bar/task-bar.component';
+import {RegisterSuccesComponent} from './component/auth/register-succes/register-succes.component';
+import {ErrorPageComponent} from './component/auth/error-page/error-page.component';
+import {RegisterExpiredComponent} from './component/auth/register-expired/register-expired.component';
+import {ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 
 
 @NgModule({
