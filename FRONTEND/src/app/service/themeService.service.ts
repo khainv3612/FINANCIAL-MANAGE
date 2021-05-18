@@ -5,6 +5,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
   providedIn: 'root',
 })
 export class ThemeService {
+  loading = false;
 
 
   private presentThemeSubject = new BehaviorSubject(
@@ -20,5 +21,17 @@ export class ThemeService {
   changeTheme(theme): void {
     this.presentThemeSubject.next(theme);
     localStorage.setItem('theme', theme);
+  }
+
+  checkLoading(): boolean {
+    return this.loading;
+  }
+
+  startLoading(): void {
+    this.loading = true;
+  }
+
+  stopLoading(): void {
+    this.loading = false;
   }
 }

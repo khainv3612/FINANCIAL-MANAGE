@@ -24,6 +24,7 @@
     "@auth0/angular-jwt": "^5.0.2",
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",
+    "ngx-loading": "^8.0.0",
     "ngx-webstorage": "^7.0.1",
     "ngx-webstorage-service": "^4.1.0",
     "rxjs": "~6.6.0",

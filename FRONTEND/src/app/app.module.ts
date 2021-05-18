@@ -21,6 +21,7 @@ import {RegisterSuccesComponent} from './component/auth/register-succes/register
 import {ErrorPageComponent} from './component/auth/error-page/error-page.component';
 import {RegisterExpiredComponent} from './component/auth/register-expired/register-expired.component';
 import {ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import { NgxLoadingModule } from 'ngx-loading';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angu
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxLoadingModule.forRoot({})
   ],
   providers: [AuthGuardService, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     JwtHelperService],

@@ -1,4 +1,13 @@
 <div [class]="themeService.presentTheme$ | async">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+      <h3>
+        Loading...
+      </h3>
+    </div>
+  </ng-template>
+  <ngx-loading [show]="themeService.checkLoading()" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+
   <app-pre-load></app-pre-load>
   <app-navbar></app-navbar>
 

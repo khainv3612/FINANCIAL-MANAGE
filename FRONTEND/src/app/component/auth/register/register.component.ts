@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {AuthService} from '../../../service/auth.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ValidationService} from '../../../directive/ValidationService';
 import {RouterService} from '../../router/router.service';
+import {ThemeService} from '../../../service/themeService.service';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
   isRegisted = false;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
-              private validate: ValidationService, private router: RouterService) {
+              private validate: ValidationService, private router: RouterService, private themeService: ThemeService) {
     this.validateService = validate;
     this.form = this.formBuilder.group(
       {
@@ -54,17 +55,20 @@ export class RegisterComponent implements OnInit {
       agreeTerm.focus();
       return;
     }
+    this.themeService.startLoading();
     this.authService.register(username, email, password).subscribe(
       data => {
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         this.isRegisted = true;
         // this.router.navigateByUrl('/login');
+        this.themeService.stopLoading();
       },
       err => {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
         this.isRegisted = false;
+        this.themeService.stopLoading();
       }
     );
   }
