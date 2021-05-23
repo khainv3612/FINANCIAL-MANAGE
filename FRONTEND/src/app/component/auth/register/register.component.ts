@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ValidationService} from '../../../directive/ValidationService';
 import {RouterService} from '../../router/router.service';
 import {ThemeService} from '../../../service/themeService.service';
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService} from 'angularx-social-login';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
   isRegisted = false;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
-              private validate: ValidationService, private router: RouterService, private themeService: ThemeService) {
+              private validate: ValidationService, private router: RouterService, private themeService: ThemeService,
+              private socialAuthService: SocialAuthService) {
     this.validateService = validate;
     this.form = this.formBuilder.group(
       {
@@ -83,4 +85,21 @@ export class RegisterComponent implements OnInit {
     this.isValidRepass = this.form.get('confirmPassword').value == this.form.get('password').value;
   }
 
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  loginWithFacebook(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then((data) => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
+  }
+
 }
+

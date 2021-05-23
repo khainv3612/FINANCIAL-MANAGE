@@ -1,6 +1,7 @@
 package com.finacial.model;
 
 import com.finacial.dto.AccountDTO;
+import lombok.Data;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +23,7 @@ import java.util.Set;
         @NamedQuery(name = "Account.updateStatus"
                 , query = "UPDATE Account a SET a.status =:statusId where a.id =:accountId")
 })
+@Data
 public class Account {
 
     @Id
@@ -48,6 +51,9 @@ public class Account {
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    @ManyToMany(mappedBy = "paticipants")
+    private List<Conversation> conversations;
 
     private Long status;
 

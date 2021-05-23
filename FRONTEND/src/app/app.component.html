@@ -1,4 +1,4 @@
-<div [class]="themeService.presentTheme$ | async">
+<div [class]="themeService.presentTheme$ | async" >
   <ng-template #customLoadingTemplate>
     <div class="custom-class">
       <h3>
@@ -9,11 +9,14 @@
   <ngx-loading [show]="themeService.checkLoading()" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
 
   <app-pre-load></app-pre-load>
-  <app-navbar></app-navbar>
 
+  <app-navbar></app-navbar>
+  <app-task-bar></app-task-bar>
   <div class="main-content d-flex flex-column hide-sidemenu">
+
     <router-outlet></router-outlet>
-    <app-setting-theme></app-setting-theme>
+    <app-footer></app-footer>
   </div>
-  <app-footer></app-footer>
+  <app-setting-theme></app-setting-theme>
+
 </div>

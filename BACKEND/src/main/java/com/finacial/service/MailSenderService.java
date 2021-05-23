@@ -22,7 +22,7 @@ public class MailSenderService {
             boolean multipart = true;
             MimeMessageHelper helper = new MimeMessageHelper(message, multipart, "utf-8");
             content.append("<h3 style='color:red;'>Please active your account by this url</h3>");
-            content.append("<a href='http://localhost:8081/active/" + token + "'>Active</a>");
+            content.append("<a href='http://localhost:8080/active/" + token + "'>Active</a>");
             message.setContent(content.toString(), "text/html");
             helper.setTo(account.getEmail());
 

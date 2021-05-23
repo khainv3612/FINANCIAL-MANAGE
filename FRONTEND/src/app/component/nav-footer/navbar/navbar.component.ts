@@ -4,6 +4,7 @@ import {AuthService} from '../../../service/auth.service';
 import {THIS_EXPR} from '@angular/compiler/src/output/output_ast';
 import {Router} from '@angular/router';
 import {RouterService} from '../../router/router.service';
+import {User} from '../../../model/User';
 
 @Component({
   selector: 'app-navbar',
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
   isNoLogin = false;
   isUserLogin = false;
   isAdminLogin = false;
+  currentUser: User;
 
   constructor(private tokenStorageService: TokenStorageService, private authService: AuthService,
               private routerService: RouterService) {
@@ -25,6 +27,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     if (this.authService.isAuthenticated()) {
       this.roles = this.tokenStorage.getUser().roles;
+      this.currentUser = this.tokenStorage.getUser();
       if (this.roles.includes('ROLE_USER')) {
         this.isUserLogin = true;
       } else if (this.roles.includes('ROLE_ADMIN')) {

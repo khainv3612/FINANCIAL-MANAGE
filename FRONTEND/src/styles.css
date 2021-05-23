@@ -1,4 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  background-color: #474783;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.container-emoji {
+  display: grid;
+  grid-template-columns: 100% 0%;
+  width: 36%;
+}
+
+.container-emoji button {
+  background: transparent;
+  border: 0;
+  transform: translateX(-40px);
+  cursor: pointer;
+}
+
+.container-emoji button:focus {
+  outline: 0;
+}
+
+.emoji-mart-preview {
+  bottom: 0px;
+  margin-top: 300px;
+  height: 1px;
+  align-content: center;
+}
+
+.emoji-mart-category {
+  /*height: 150px;*/
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+

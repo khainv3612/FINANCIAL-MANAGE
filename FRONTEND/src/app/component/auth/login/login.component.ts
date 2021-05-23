@@ -6,6 +6,7 @@ import {ValidationService} from '../../../directive/ValidationService';
 import {environment} from '../../../../environments/environment';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RouterService} from '../../router/router.service';
+import {ThemeService} from '../../../service/themeService.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
 
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private themeService: ThemeService,
               private validate: ValidationService, private router: RouterService, private route: ActivatedRoute) {
     this.validateService = validate;
     this.loginForm = new FormGroup({
@@ -53,8 +54,10 @@ export class LoginComponent implements OnInit {
       console.log('Error;');
       return;
     }
+    this.themeService.startLoading();
     this.authService.login(username, password).subscribe(
       data => {
+        this.themeService.stopLoading();
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 
@@ -68,6 +71,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl(this.returnUrl);
       },
       err => {
+        this.themeService.stopLoading();
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }

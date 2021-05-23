@@ -29,12 +29,12 @@ public class ConfigResource {
     }
 
     @Bean
-    public Status sttTokenNotActived(){
+    public Status sttTokenNotActived() {
         return new Status(6L, 0L, "TOKEN_NOT_ACTIVED", "TOKEN");
     }
 
     @Bean
-    public Status sttTokenActived(){
+    public Status sttTokenActived() {
         return new Status(5L, 1L, "TOKEN_ACTIVED", "TOKEN");
     }
 

@@ -21,8 +21,11 @@ import {RegisterSuccesComponent} from './component/auth/register-succes/register
 import {ErrorPageComponent} from './component/auth/error-page/error-page.component';
 import {RegisterExpiredComponent} from './component/auth/register-expired/register-expired.component';
 import {ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
-import { NgxLoadingModule } from 'ngx-loading';
-
+import {NgxLoadingModule} from 'ngx-loading';
+import {SocialLoginModule, SocialAuthServiceConfig} from 'angularx-social-login';
+import {GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
+import { ChatComponent } from './component/chat/chat.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { NgxLoadingModule } from 'ngx-loading';
     TaskBarComponent,
     RegisterSuccesComponent,
     ErrorPageComponent,
-    RegisterExpiredComponent
+    RegisterExpiredComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,11 +51,34 @@ import { NgxLoadingModule } from 'ngx-loading';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    SocialLoginModule,
+    PickerModule
   ],
   providers: [AuthGuardService, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
-    JwtHelperService],
+    JwtHelperService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '289117989557-2v3dehq71dve9g3vrau2nurk2b2eehm7.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              '1071643186574715'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

@@ -10,6 +10,7 @@ import {RegisterSuccesComponent} from '../../auth/register-succes/register-succe
 import {ErrorPageComponent} from '../../auth/error-page/error-page.component';
 import {RegisterExpiredComponent} from '../../auth/register-expired/register-expired.component';
 import {Role} from '../../../model/Role';
+import {ChatComponent} from '../../chat/chat.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'activeaccout_success', component: RegisterSuccesComponent},
   {path: 'error_page', component: ErrorPageComponent},
+  {path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   {path: 'active_expired', component: RegisterExpiredComponent}
 ];
 

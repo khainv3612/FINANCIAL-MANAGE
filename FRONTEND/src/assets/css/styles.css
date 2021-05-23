@@ -5426,3 +5426,16 @@ textarea.form-control {
   cursor: pointer;
 }
 /*# sourceMappingURL=styles.css.map */
+
+.chat-box-emoji {
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  /*width: 100%;*/
+  /*padding-right: 30px;*/
+  /*padding-bottom: 0px;*/
+  padding-bottom: 100px;
+  height: 78%;
+  /*padding-top: 20px;*/
+}
