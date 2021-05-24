@@ -1,7 +1,7 @@
-var series = 
-{
+var series =
+  {
     "monthDataSeries1": {
-        "prices": [
+      "prices": [
         8107.85,
         8128.0,
         8122.9,
@@ -22,8 +22,8 @@ var series =
         8600.65,
         8881.1,
         9340.85
-        ],
-        "dates": [
+      ],
+      "dates": [
         "13 Nov 2017",
         "14 Nov 2017",
         "15 Nov 2017",
@@ -44,10 +44,10 @@ var series =
         "06 Dec 2017",
         "07 Dec 2017",
         "08 Dec 2017"
-        ]
+      ]
     },
     "monthDataSeries2": {
-        "prices": [
+      "prices": [
         8423.7,
         8423.5,
         8514.3,
@@ -68,8 +68,8 @@ var series =
         8122.9,
         8107.85,
         8128.0
-        ],
-        "dates": [
+      ],
+      "dates": [
         "13 Nov 2017",
         "14 Nov 2017",
         "15 Nov 2017",
@@ -90,10 +90,10 @@ var series =
         "06 Dec 2017",
         "07 Dec 2017",
         "08 Dec 2017"
-        ]
+      ]
     },
     "monthDataSeries3": {
-        "prices": [
+      "prices": [
         7114.25,
         7126.6,
         7116.95,
@@ -217,8 +217,8 @@ var series =
         8487.7,
         8506.9,
         8626.2
-        ],
-        "dates": [
+      ],
+      "dates": [
         "02 Jun 2017",
         "05 Jun 2017",
         "06 Jun 2017",
@@ -342,6 +342,6 @@ var series =
         "24 Nov 2017",
         "27 Nov 2017",
         "28 Nov 2017"
-        ]
+      ]
     }
-}
+  }

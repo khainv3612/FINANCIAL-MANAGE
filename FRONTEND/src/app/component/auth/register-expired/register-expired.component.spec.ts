@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RegisterExpiredComponent } from './register-expired.component';
+import {RegisterExpiredComponent} from './register-expired.component';
 
 describe('RegisterExpiredComponent', () => {
   let component: RegisterExpiredComponent;
@@ -8,9 +8,9 @@ describe('RegisterExpiredComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterExpiredComponent ]
+      declarations: [RegisterExpiredComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

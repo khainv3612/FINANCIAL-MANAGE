@@ -6,6 +6,8 @@ import com.finacial.model.Status;
 import com.finacial.model.VerificationToken;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("accountService")
 public interface IAccountService {
     String generatePassWordSalt();
@@ -17,4 +19,6 @@ public interface IAccountService {
     void updateStatus(Long accId, Status status);
 
     void activeAccount(Long accId);
+
+    List<AccountDTO> getAll();
 }

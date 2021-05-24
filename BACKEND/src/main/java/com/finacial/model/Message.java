@@ -1,15 +1,15 @@
 package com.finacial.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "MESSAGE")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Message {
@@ -23,9 +23,10 @@ public class Message {
     @Column(name = "CREATE_USER_ID")
     private Long createId;
 
-//    @Column(name = "CONVERSATION_ID")
-    @ManyToOne
+    //    @Column(name = "CONVERSATION_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONVERSATION_ID")
+    @JsonIgnore
     private Conversation conversation;
 
     @Column(name = "CREATED_DATE")

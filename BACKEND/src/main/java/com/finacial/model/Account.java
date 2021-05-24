@@ -1,15 +1,13 @@
 package com.finacial.model;
 
-import com.finacial.dto.AccountDTO;
-import lombok.Data;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,7 +21,8 @@ import java.util.Set;
         @NamedQuery(name = "Account.updateStatus"
                 , query = "UPDATE Account a SET a.status =:statusId where a.id =:accountId")
 })
-@Data
+@Getter
+@Setter
 public class Account {
 
     @Id
@@ -47,13 +46,14 @@ public class Account {
     @Size(max = 120)
     private String passwordSalt;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @ManyToMany(mappedBy = "paticipants")
-    private List<Conversation> conversations;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "paticipants")
+    @JsonIgnore
+    private Set<Conversation> conversations;
 
     private Long status;
 
@@ -120,6 +120,10 @@ public class Account {
     }
 
     public Account() {
+    }
+
+    public Account(Long id) {
+        this.id = id;
     }
 
     public Account(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(max = 120) String password, @Size(max = 120) String passwordSalt) {

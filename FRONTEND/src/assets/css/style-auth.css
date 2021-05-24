@@ -739,7 +739,7 @@ label.valid:after {
   -o-transform: translateY(-50%);
   -ms-transform: translate5(-50%);
   color: #222;
-/*padding-bottom: 90%;*/
+  /*padding-bottom: 90%;*/
 }
 
 /*# sourceMappingURL=style-auth.css.map */

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TaskBarComponent } from './task-bar.component';
+import {TaskBarComponent} from './task-bar.component';
 
 describe('TaskBarComponent', () => {
   let component: TaskBarComponent;
@@ -8,9 +8,9 @@ describe('TaskBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TaskBarComponent ]
+      declarations: [TaskBarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

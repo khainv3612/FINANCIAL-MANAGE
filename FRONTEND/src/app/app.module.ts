@@ -24,8 +24,8 @@ import {ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angu
 import {NgxLoadingModule} from 'ngx-loading';
 import {SocialLoginModule, SocialAuthServiceConfig} from 'angularx-social-login';
 import {GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
-import { ChatComponent } from './component/chat/chat.component';
-import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import {ChatComponent} from './component/chat/chat.component';
+import {PickerModule} from '@ctrl/ngx-emoji-mart';
 
 @NgModule({
   declarations: [

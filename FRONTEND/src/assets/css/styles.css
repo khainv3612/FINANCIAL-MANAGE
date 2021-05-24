@@ -40,6 +40,7 @@ This files table contents are outlined below >>>>>
 /* Variables */
 /* End Variables */
 @import url("https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i&display=swap");
+
 body {
   font-family: "Nunito", sans-serif;
   color: #686c71;
@@ -80,7 +81,7 @@ img {
 
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px #f6f6f7;
-          box-shadow: inset 0 0 6px #f6f6f7;
+  box-shadow: inset 0 0 6px #f6f6f7;
   border-radius: 30px;
 }
 
@@ -88,7 +89,7 @@ img {
   border-radius: 30px;
   background: #2962ff;
   -webkit-box-shadow: inset 0 0 6px #f6f6f7;
-          box-shadow: inset 0 0 6px #f6f6f7;
+  box-shadow: inset 0 0 6px #f6f6f7;
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {
@@ -110,13 +111,13 @@ button:focus {
 .btn:focus {
   outline: 0;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 .btn-primary:focus {
   outline: 0;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 .bg-purple {
@@ -230,7 +231,7 @@ button:focus {
   border: 1px solid #c8c8f1;
   outline: 0;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 .form-control-lg {
@@ -521,7 +522,7 @@ form .form-group {
 
 .spin {
   -webkit-animation: spin 2s linear infinite;
-          animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
 }
 
 .black-text {
@@ -762,7 +763,7 @@ form .form-group {
 .top-menu {
   background: #ffffff;
   -webkit-box-shadow: 0px 0 10px rgba(0, 0, 0, 0.08);
-          box-shadow: 0px 0 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.08);
 }
 
 .top-menu .navbar-brand .large-logo {
@@ -883,7 +884,7 @@ form .form-group {
 
 .top-menu .nav-search-form .search-success:focus {
   -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 .top-menu .right-nav .nav-item {
@@ -1144,9 +1145,9 @@ form .form-group {
 
 .top-menu .x .top-bar {
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   -webkit-transform-origin: 10% 10%;
-          transform-origin: 10% 10%;
+  transform-origin: 10% 10%;
 }
 
 .top-menu .x .middle-bar {
@@ -1155,9 +1156,9 @@ form .form-group {
 
 .top-menu .x .bottom-bar {
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   -webkit-transform-origin: 10% 90%;
-          transform-origin: 10% 90%;
+  transform-origin: 10% 90%;
   margin-top: 5px;
 }
 
@@ -1170,7 +1171,7 @@ form .form-group {
   height: 100%;
   width: 220px;
   -webkit-box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.05);
-          box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.05);
   z-index: 1030;
   left: 0;
   top: 62px;
@@ -1209,7 +1210,7 @@ form .form-group {
   height: 15px;
   width: 40px;
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   bottom: 0;
 }
 
@@ -1226,7 +1227,7 @@ form .form-group {
   height: 15px;
   width: 40px;
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   bottom: 0;
 }
 
@@ -1266,7 +1267,7 @@ form .form-group {
   height: 15px;
   width: 40px;
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   bottom: 0;
 }
 
@@ -1289,7 +1290,7 @@ form .form-group {
   height: 15px;
   width: 40px;
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   bottom: 0;
 }
 
@@ -1329,14 +1330,15 @@ form .form-group {
   .sidemenu .dropdown {
     position: static;
   }
+
   .sidemenu .dropdown .dropdown-menu {
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
     overflow: hidden;
     -webkit-transform-origin: top center;
-            transform-origin: top center;
+    transform-origin: top center;
     -webkit-transform: scale(1, 0);
-            transform: scale(1, 0);
+    transform: scale(1, 0);
     display: block;
     width: 200px;
     left: auto;
@@ -1348,10 +1350,12 @@ form .form-group {
     height: 100vh;
     overflow-y: auto;
   }
+
   .sidemenu .dropdown:hover > .dropdown-menu {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
+
   .sidemenu .collapse ul li {
     position: relative;
   }
@@ -2377,17 +2381,17 @@ form .form-group {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   max-width: 120px;
 }
 
 .hide-card-shadow {
   -webkit-box-shadow: -8px 12px 18px 0 rgba(25, 42, 70, 0.13);
-          box-shadow: -8px 12px 18px 0 rgba(25, 42, 70, 0.13);
+  box-shadow: -8px 12px 18px 0 rgba(25, 42, 70, 0.13);
 }
 
 .card-dropdown .btn {
@@ -2421,11 +2425,11 @@ form .form-group {
   left: auto !important;
   right: 0;
   -webkit-transform: inherit !important;
-          transform: inherit !important;
+  transform: inherit !important;
   top: 24px !important;
   border-radius: 5px;
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   border: none;
 }
 
@@ -2461,7 +2465,7 @@ form .form-group {
   -webkit-transform: translateY(-4px) scale(1.01);
   transform: translateY(-4px) scale(1.01);
   -webkit-box-shadow: 0 15px 25px rgba(60, 50, 100, 0.1);
-          box-shadow: 0 15px 25px rgba(60, 50, 100, 0.1);
+  box-shadow: 0 15px 25px rgba(60, 50, 100, 0.1);
 }
 
 /* stats card */
@@ -2604,8 +2608,8 @@ form .form-group {
 
 .stats-card-two .align-items-center {
   -webkit-box-align: center !important;
-      -ms-flex-align: center !important;
-          align-items: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
 }
 
 .avatar-blue {
@@ -3070,7 +3074,7 @@ form .form-group {
 .add-new-task .form-control {
   height: 45px;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 .add-new-task .btn-primary {
@@ -3166,7 +3170,7 @@ form .form-group {
   top: 14px;
   padding: 5px;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   color: #f75d81;
 }
 
@@ -3184,7 +3188,7 @@ form .form-group {
   border-radius: 10px;
   position: relative;
   -webkit-box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -3451,7 +3455,7 @@ form .form-group {
   border-radius: 0;
   border-color: #f6f6f7;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   padding: 15px;
   line-height: 26px;
 }
@@ -3712,7 +3716,7 @@ textarea.form-control {
 
 .mail-item-nav {
   border-right: 1px solid #eee;
-  height: 720px;
+  height: 620px;
   overflow-y: auto;
 }
 
@@ -4105,7 +4109,7 @@ textarea.form-control {
   position: relative;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
   text-align: center;
 }
 
@@ -4132,7 +4136,7 @@ textarea.form-control {
   padding: 30px;
   text-align: center;
   -webkit-box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
-          box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
+  box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
   border-radius: 4px;
 }
 
@@ -4193,7 +4197,7 @@ textarea.form-control {
 .profile-middle-content {
   background-color: #fff;
   -webkit-box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
-          box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
+  box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
   border-radius: 4px;
 }
 
@@ -4279,7 +4283,7 @@ textarea.form-control {
   background-color: #fff;
   border-radius: 4px;
   -webkit-box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
-          box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
+  box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
   max-width: 800px;
   margin: auto;
 }
@@ -4290,7 +4294,7 @@ textarea.form-control {
   text-align: center;
   border-radius: 4px;
   -webkit-box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
-          box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
+  box-shadow: 2px 3px 10px 0px rgba(119, 119, 119, 0.1);
 }
 
 .single-user-card img {
@@ -4513,7 +4517,7 @@ textarea.form-control {
   border-radius: 30px;
   text-align: center;
   -webkit-box-shadow: 0 0 0 4px #fff;
-          box-shadow: 0 0 0 4px #fff;
+  box-shadow: 0 0 0 4px #fff;
   line-height: 40px;
   font-size: 15px;
   float: left;
@@ -4523,7 +4527,7 @@ textarea.form-control {
   position: relative;
   background: #fff;
   -webkit-box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
   padding: 1.7em;
   margin-left: 70px;
   border-radius: 4px;
@@ -4860,7 +4864,7 @@ textarea.form-control {
 .side-menu-switch .switch .slider.round {
   border-radius: 30px;
   -webkit-box-shadow: 0 0 8px #ddd;
-          box-shadow: 0 0 8px #ddd;
+  box-shadow: 0 0 8px #ddd;
 }
 
 .side-menu-switch .switch .slider.round:before {
@@ -5081,7 +5085,7 @@ textarea.form-control {
   position: relative;
   border: 4px solid #fff;
   -webkit-animation: loader 2s infinite ease;
-          animation: loader 2s infinite ease;
+  animation: loader 2s infinite ease;
 }
 
 .preloader .loader-inner {
@@ -5090,52 +5094,52 @@ textarea.form-control {
   width: 100%;
   background-color: #fff;
   -webkit-animation: loader-inner 2s infinite ease-in;
-          animation: loader-inner 2s infinite ease-in;
+  animation: loader-inner 2s infinite ease-in;
 }
 
 @-webkit-keyframes loader {
   0% {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   25% {
     -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   50% {
     -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   75% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes loader {
   0% {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   25% {
     -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   50% {
     -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   75% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -5288,7 +5292,7 @@ textarea.form-control {
   width: 320px;
   height: 100%;
   -webkit-transform: translate3d(0%, 0, 0);
-          transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
 }
 
 .modal.right .modal-content {
@@ -5425,6 +5429,7 @@ textarea.form-control {
 .cursor-pointer {
   cursor: pointer;
 }
+
 /*# sourceMappingURL=styles.css.map */
 
 .chat-box-emoji {
@@ -5435,7 +5440,7 @@ textarea.form-control {
   /*width: 100%;*/
   /*padding-right: 30px;*/
   /*padding-bottom: 0px;*/
-  padding-bottom: 100px;
+  padding-bottom: 600px;
   height: 78%;
   /*padding-top: 20px;*/
 }

@@ -1,18 +1,22 @@
 package com.finacial.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "CONVERSATION")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedEntityGraph(
+        name = "Conversation.messages.paticipants",
+        attributeNodes = {@NamedAttributeNode("messages"),
+                @NamedAttributeNode("paticipants")})
+
 public class Conversation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,13 +29,14 @@ public class Conversation {
     @Column(name = "CREATE_DATE")
     private Date createDate;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Message> messages;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "conversation", cascade = CascadeType.ALL)
+//    @OneToMany
+    private Set<Message> messages;
 
     @ManyToMany
     @JoinTable(name = "conversation_paticipants",
             joinColumns = @JoinColumn(name = "conversation_id"),
             inverseJoinColumns = @JoinColumn(name = "paticipants_id"))
-    private List<Account> paticipants;
+    private Set<Account> paticipants;
 
 }

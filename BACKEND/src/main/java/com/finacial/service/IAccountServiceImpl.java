@@ -1,9 +1,11 @@
 package com.finacial.service;
 
 import com.finacial.dto.AccountDTO;
+import com.finacial.dto.ConversationDTO;
 import com.finacial.model.Account;
 import com.finacial.model.Status;
 import com.finacial.model.VerificationToken;
+import com.finacial.repository.AccountRepository;
 import com.finacial.repository.VerificationTokenRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.modelmapper.ModelMapper;
@@ -16,6 +18,9 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class IAccountServiceImpl implements IAccountService {
@@ -31,6 +36,9 @@ public class IAccountServiceImpl implements IAccountService {
     private EntityManager entityManager;
     @Autowired
     private Status statusAccActived;
+
+    @Autowired
+    private AccountRepository repository;
 
     @Autowired
     private VerificationTokenRepository tokenRepository;
@@ -71,9 +79,9 @@ public class IAccountServiceImpl implements IAccountService {
         try {
             transactionTemplate.execute(transactionStatus -> {
                 entityManager.createNamedQuery("Account.updateStatus")
-                .setParameter("statusId", status.getStatusId())
-                .setParameter("accountId", accId)
-                .executeUpdate();
+                        .setParameter("statusId", status.getStatusId())
+                        .setParameter("accountId", accId)
+                        .executeUpdate();
                 transactionStatus.flush();
                 return null;
             });
@@ -89,6 +97,17 @@ public class IAccountServiceImpl implements IAccountService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    public List<AccountDTO> getAll() {
+        List<Account> list = repository.findAll();
+        List<AccountDTO> result = new ArrayList<>();
+        if (null != list && !list.isEmpty()) {
+            result = Arrays.asList(modelMapper.map(list, AccountDTO[].class));
+
+        }
+        return result;
     }
 
 }

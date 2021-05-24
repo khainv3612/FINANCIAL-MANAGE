@@ -5,7 +5,9 @@ import com.finacial.model.Message;
 import com.finacial.repository.MessageRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("messageService")
 public class IMessageServiceImpl implements IMessageService {
     @Autowired
     private ModelMapper modelMapper;

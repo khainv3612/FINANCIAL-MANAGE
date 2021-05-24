@@ -1,11 +1,15 @@
 package com.finacial.dto;
 
+import com.finacial.model.Conversation;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
-@Data
-public class MessageDTO {
+@Getter
+@Setter
+public class MessageDTO implements Comparable<MessageDTO> {
     private Long messageId;
     private Long createId;
     private String username;
@@ -13,7 +17,7 @@ public class MessageDTO {
     private Type type;
     private String createdDateStr;
     private Date createdDate;
-    private Long conversationId;
+    private Conversation conversation;
 
     public MessageDTO() {
     }
@@ -28,12 +32,12 @@ public class MessageDTO {
         this.createId = builder.createId;
     }
 
-    public Long getConversationId() {
-        return conversationId;
+    public Conversation getConversation() {
+        return conversation;
     }
 
-    public void setConversationId(Long conversationId) {
-        this.conversationId = conversationId;
+    public void setConversation(Conversation conversation) {
+        this.conversation = conversation;
     }
 
     public String getUsername() {
@@ -66,6 +70,11 @@ public class MessageDTO {
 
     public void setCreatedDateStr(String createdDateStr) {
         this.createdDateStr = createdDateStr;
+    }
+
+    @Override
+    public int compareTo(MessageDTO o) {
+        return this.getMessageId().compareTo(o.getMessageId());
     }
 
     public enum Type {
