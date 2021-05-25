@@ -436,7 +436,7 @@
   }
 
   .mail-item-nav .nav-pills .nav-link .info p {
-    color: #47404f;
+    /*color: #47404f;*/
     margin: 6px 0 0;
     line-height: 17px;
     font-size: 12px;

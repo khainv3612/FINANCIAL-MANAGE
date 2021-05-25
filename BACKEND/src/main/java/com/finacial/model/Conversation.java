@@ -12,10 +12,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@NamedEntityGraph(
-        name = "Conversation.messages.paticipants",
-        attributeNodes = {@NamedAttributeNode("messages"),
-                @NamedAttributeNode("paticipants")})
 
 public class Conversation {
     @Id

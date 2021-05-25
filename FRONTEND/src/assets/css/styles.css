@@ -3760,7 +3760,7 @@ textarea.form-control {
 }
 
 .mail-item-nav .nav-pills .nav-link .info p {
-  color: #47404f;
+  /*color: #47404f;*/
   margin: 6px 0 0;
   line-height: 1;
   font-size: 13px;
@@ -3963,7 +3963,9 @@ textarea.form-control {
 
 .chat-list-right {
   position: relative;
-  padding-right: 60px;
+  margin-right: 0px;
+  /*padding-right: 0px;*/
+  /*width: fit-content;*/
   margin-bottom: 20px;
 }
 
@@ -5443,4 +5445,10 @@ textarea.form-control {
   padding-bottom: 600px;
   height: 78%;
   /*padding-top: 20px;*/
+}
+
+.new-message {
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
 }

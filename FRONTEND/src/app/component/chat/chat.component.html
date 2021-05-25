@@ -19,8 +19,11 @@
       <div class="row">
         <div class="col-md-4">
           <div class="mail-item-nav">
-            <form class="search-contact">
-              <input placeholder="Search..." type="text" class="form-control">
+            <!--            <button style="display: inline-block;">dsf</button>-->
+            <i-feather name="plus-circle" style="display: inline-block" class="cursor-pointer"
+                       title="Create new chat"></i-feather>
+            <form class="search-contact" type="text" style="padding-right: 0px;display: inline-block;width: 94%">
+              <input placeholder="Search..." class="form-control">
             </form>
 
             <!--            list conversation-->
@@ -31,8 +34,10 @@
                 <span class="status online"></span>
                 <div class="info">
                   <div class="name">{{conv.conversationName}}</div>
-                  <p>Welcome to React World</p>
+                  <span id="message_preview_{{conv.conversationId}}">
+                  <p>{{conv.messages[conv.messages.length - 1].content}}</p>
                   <span class="date">Mar 1, 2019</span>
+                    </span>
                 </div>
               </a>
 
@@ -40,39 +45,40 @@
           </div>
         </div>
 
-        <div class="col-md-8" [hidden]="isFirsrConnect">
-<!--          <div>-->
-            <div class="d-flex">
-              <img src="assets/img/user/1.jpg" alt="User" class="wh-40 mr-2 rounded-circle">
-              <div class="info">
-                <div
-                  class="name mt-2 fs-15">{{currentConversation ? currentConversation.conversationName : ''}}</div>
-              </div>
+        <div class="col-md-8" [hidden]="isFirstConnect">
+          <!--          <div>-->
+          <div class="d-flex">
+            <img src="assets/img/user/1.jpg" alt="User" class="wh-40 mr-2 rounded-circle">
+            <div class="info">
+              <div
+                class="name mt-2 fs-15">{{currentConversation ? currentConversation.conversationName : ''}}</div>
             </div>
-            <hr>
-<!--          </div>-->
-          <div class="tab-content" >
+          </div>
+          <hr>
+          <!--          </div>-->
+          <div class="tab-content">
 
             <div class="tab-pane fade show active" id="chatOne" role="tabpanel">
-              <div class="email-details-warp chat-details-warp" style="height: 620px;padding-bottom: 150px" *ngIf="!isFirsrConnect" id="message-div">
-                <div class="flex-row">
+              <div class="email-details-warp chat-details-warp" style="height: 620px;padding-bottom: 150px"
+                   *ngIf="!isFirstConnect" id="message-div">
+                <div class="flex-row" id="testscroll">
                   <div *ngFor="let mess of currentConversation.messages">
                     <!--//owner message-->
                     <div *ngIf="mess.createId==currentUser.id" class="chat-list-right">
-                      <img src="assets/img/user/1.jpg" alt="User" class="wh-40 rounded-circle">
+                      <!--                      <img src="assets/img/user/1.jpg" alt="User" class="wh-40 rounded-circle">-->
                       <div class="chat-details">
-                        <div class="name">Aaron Rossi</div>
+                        <div class="name">{{mess.createdName}}</div>
                         <p>{{mess.content}}</p>
-                        <span class="date">Mar 1, 2019</span>
+                        <span class="date">{{mess.createdDate}}</span>
                       </div>
                     </div>
                     <!--other user message-->
                     <div *ngIf="mess.createId!=currentUser.id" class="chat-list-left">
                       <img src="assets/img/user/2.jpg" alt="User" class="wh-40 mr-2 rounded-circle">
                       <div class="chat-details">
-                        <div class="name">Marco Gomez</div>
+                        <div class="name">{{mess.createdName}}</div>
                         <p>{{mess.content}}</p>
-                        <span class="date">Mar 1, 2019</span>
+                        <span class="date">{{mess.createdDate}}</span>
                       </div>
                     </div>
                   </div>
@@ -87,7 +93,7 @@
                   (emojiSelect)="addEmoji($event)" title="Choose your emoji"></emoji-mart>
                 <!--              </span>-->
               </div>
-              <div class="chat-box" >
+              <div class="chat-box" (click)="notifyNewMessage(currentConversation.conversationId,true)">
 
                 <form style="padding-bottom: 0px">
                   <textarea class="form-control" rows="2" [(ngModel)]="content" [ngModelOptions]="{standalone: true}"

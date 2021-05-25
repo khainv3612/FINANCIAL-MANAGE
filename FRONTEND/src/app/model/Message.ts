@@ -1,13 +1,13 @@
-import {User} from "./User";
-import {Conversation} from "./Conversation";
+import {User} from './User';
+import {Conversation} from './Conversation';
 
 export class Message {
-  messageId: number;
+  messageId?: number;
   createId?: number;
-  username?: string;
+  createdName?: string;
   content?: string;
   type?: any;
   createdDateStr ?: string;
   createdDate ?: Date;
-  conversation?:Conversation;
+  conversation?: Conversation;
 }

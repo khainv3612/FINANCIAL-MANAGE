@@ -8,6 +8,8 @@ export const environment = {
   apiUrl: 'http://localhost:8080/',
   TOKEN_KEY: 'auth-token',
   USER_KEY: 'auth-user',
+  PAGEABLE_PAGE_DEFAULT : 0,
+  PAGEABLE_SIZE_DEFAULT : 10
 };
 
 /*

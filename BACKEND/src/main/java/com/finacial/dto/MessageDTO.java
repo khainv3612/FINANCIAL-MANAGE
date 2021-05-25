@@ -1,7 +1,6 @@
 package com.finacial.dto;
 
-import com.finacial.model.Conversation;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,18 +11,18 @@ import java.util.Date;
 public class MessageDTO implements Comparable<MessageDTO> {
     private Long messageId;
     private Long createId;
-    private String username;
+    private String createdName;
     private String content;
     private Type type;
     private String createdDateStr;
     private Date createdDate;
-    private Conversation conversation;
+    private ConversationDTO conversation;
 
     public MessageDTO() {
     }
 
     public MessageDTO(Builder builder) {
-        this.username = builder.username;
+        this.createdName = builder.username;
         this.content = builder.content;
         this.type = builder.type;
         this.createdDateStr = builder.createDate;
@@ -32,20 +31,20 @@ public class MessageDTO implements Comparable<MessageDTO> {
         this.createId = builder.createId;
     }
 
-    public Conversation getConversation() {
+    public ConversationDTO getConversation() {
         return conversation;
     }
 
-    public void setConversation(Conversation conversation) {
+    public void setConversation(ConversationDTO conversation) {
         this.conversation = conversation;
     }
 
-    public String getUsername() {
-        return username;
+    public String getCreatedName() {
+        return createdName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCreatedName(String createdName) {
+        this.createdName = createdName;
     }
 
     public String getContent() {

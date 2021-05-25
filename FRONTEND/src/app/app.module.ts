@@ -26,6 +26,9 @@ import {SocialLoginModule, SocialAuthServiceConfig} from 'angularx-social-login'
 import {GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
 import {ChatComponent} from './component/chat/chat.component';
 import {PickerModule} from '@ctrl/ngx-emoji-mart';
+import {FeatherModule} from 'angular-feather';
+import {IconsModule} from './directive/ icon.module';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,9 @@ import {PickerModule} from '@ctrl/ngx-emoji-mart';
     ReactiveFormsModule,
     NgxLoadingModule.forRoot({}),
     SocialLoginModule,
-    PickerModule
+    PickerModule,
+    IconsModule,
+    InfiniteScrollModule
   ],
   providers: [AuthGuardService, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     JwtHelperService,

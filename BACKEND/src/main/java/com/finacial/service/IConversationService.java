@@ -4,7 +4,6 @@ import com.finacial.dto.ConversationDTO;
 import com.finacial.model.Account;
 import com.finacial.model.Conversation;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,5 +17,5 @@ public interface IConversationService {
 
 
     List<Conversation> getAll();
-    List<ConversationDTO> findAllByPaticipantsIs(Account account);
+    List<ConversationDTO> findAllByPaticipantsIs(Account account, int page, int size);
 }

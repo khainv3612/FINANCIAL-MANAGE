@@ -4230,7 +4230,9 @@ textarea.form-control {
 
 .chat-list-right {
   position: relative;
-  padding-right: 60px;
+  padding-right: 0px;
+  //display: inline-block;
+  //width: fit-content;
   margin-bottom: 20px;
 
   > img {

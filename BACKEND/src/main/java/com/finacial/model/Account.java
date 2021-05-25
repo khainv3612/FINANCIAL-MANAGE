@@ -1,7 +1,9 @@
 package com.finacial.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -23,6 +25,7 @@ import java.util.Set;
 })
 @Getter
 @Setter
+@AllArgsConstructor
 public class Account {
 
     @Id
@@ -37,6 +40,8 @@ public class Account {
     @Size(max = 50)
     @Email
     private String email;
+
+    private String avatar;
 
     @NotBlank
     @Size(max = 120)

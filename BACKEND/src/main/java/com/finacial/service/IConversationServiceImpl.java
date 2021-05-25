@@ -6,6 +6,9 @@ import com.finacial.model.Conversation;
 import com.finacial.repository.ConversationRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -33,8 +36,9 @@ public class IConversationServiceImpl implements IConversationService {
     }
 
     @Override
-    public List<ConversationDTO> findAllByPaticipantsIs(Account account) {
-        List<Conversation> list = repository.findAllByPaticipantsIs(account);
+    public List<ConversationDTO> findAllByPaticipantsIs(Account account, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("conversationId").descending());
+        List<Conversation> list = repository.findAllByPaticipantsIs(account, pageable);
         List<ConversationDTO> result = new ArrayList<>();
         if (null != list) {
             result = Arrays.asList(modelMapper.map(list, ConversationDTO[].class));
