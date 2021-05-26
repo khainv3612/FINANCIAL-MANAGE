@@ -25,7 +25,7 @@
               </span>
             <form class="search-contact" type="text" style="padding-left: 1%;width: 94%;display: inline-block">
               <!--              <input placeholder="Search..." class="form-control">-->
-              <ng-autocomplete placeholder="Search friend" id="keysearch"
+              <ng-autocomplete placeholder="Search chat" id="keysearch"
                                [data]="listConvSearch"
                                [searchKeyword]="keywordConv"
                                (selected)='selectFriend($event)'
@@ -104,7 +104,7 @@
                       <img src="assets/img/user/2.jpg" alt="User" class="wh-40 mr-2 rounded-circle">
                       <div class="chat-details">
                         <div class="name">{{mess.createdName}}</div>
-                        <p>{{mess.content}}</p>
+                        <p [innerHTML]="mess.content"></p>
                         <span class="date">{{mess.createdDate}}</span>
                       </div>
                     </div>
@@ -123,7 +123,8 @@
               <div class="chat-box" (click)="notifyNewMessage(currentConversation.conversationId,true)">
 
                 <form style="padding-bottom: 0px">
-                  <textarea class="form-control" rows="2" [(ngModel)]="content" [ngModelOptions]="{standalone: true}"
+                  <textarea class="form-control" rows="2" id="content_message" [(ngModel)]="content"
+                            [ngModelOptions]="{standalone: true}"
                             placeholder="Type a message here"></textarea>
                   <ul class="list-inline d-flex align-items-center mb-0">
                     <li class="list-inline-item cursor-pointer mr-3"
