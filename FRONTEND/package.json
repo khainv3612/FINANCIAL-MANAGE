@@ -26,6 +26,7 @@
     "@stomp/ng2-stompjs": "^8.0.0",
     "@stomp/stompjs": "^6.1.0",
     "angular-feather": "^6.1.0",
+    "angular-ng-autocomplete": "^2.0.5",
     "angularx-social-login": "^3.5.7",
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",

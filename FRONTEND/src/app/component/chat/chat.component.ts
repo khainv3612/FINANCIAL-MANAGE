@@ -33,6 +33,32 @@ export class ChatComponent implements OnInit {
   pageMessage = 0;
   sizeChat = 10;
   sizeMessage = 5;
+  notFound = 'notFound';
+  keyword = 'name';
+  data = [
+    {
+      id: 1,
+      name: 'Usa'
+    },
+    {
+      id: 2,
+      name: 'England'
+    }
+  ];
+
+
+  selectEvent(item): void {
+    // do something with selected item
+  }
+
+  onChangeSearch(val: string): void {
+    // fetch remote data from here
+    // And reassign the 'data' which is binded to 'data' property.
+  }
+
+  onFocused(e): void {
+    // do something when input is focused
+  }
 
 
   public addEmoji(event): any {

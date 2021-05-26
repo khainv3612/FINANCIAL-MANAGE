@@ -29,6 +29,7 @@ import {PickerModule} from '@ctrl/ngx-emoji-mart';
 import {FeatherModule} from 'angular-feather';
 import {IconsModule} from './directive/ icon.module';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     SocialLoginModule,
     PickerModule,
     IconsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    AutocompleteLibModule
   ],
   providers: [AuthGuardService, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     JwtHelperService,
