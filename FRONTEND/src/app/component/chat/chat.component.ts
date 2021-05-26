@@ -11,6 +11,8 @@ import {Conversation} from '../../model/Conversation';
 import {Message} from '../../model/Message';
 import {environment} from '../../../environments/environment';
 import {MessageService} from '../../service/MessageService';
+import {UserService} from '../../service/user.service';
+import {Request} from '../../model/Request';
 
 @Component({
   selector: 'app-chat',
@@ -30,11 +32,17 @@ export class ChatComponent implements OnInit {
   isFirstConnect = true;
   isLoadedAllMessage = false;
   pageChat = 0;
+  pageFriend = 0;
   pageMessage = 0;
   sizeChat = 10;
+  sizeFriend = 10;
   sizeMessage = 5;
   notFound = 'notFound';
-  keyword = 'name';
+  keywordFriend = 'username';
+  keywordConv = 'conversationName';
+
+  listFriend: User[];
+  listConvSearch: Conversation[];
   data = [
     {
       id: 1,
@@ -46,11 +54,6 @@ export class ChatComponent implements OnInit {
     }
   ];
 
-
-  selectEvent(item): void {
-    // do something with selected item
-  }
-
   onChangeSearch(val: string): void {
     // fetch remote data from here
     // And reassign the 'data' which is binded to 'data' property.
@@ -58,6 +61,7 @@ export class ChatComponent implements OnInit {
 
   onFocused(e): void {
     // do something when input is focused
+    console.log('sdf');
   }
 
 
@@ -67,7 +71,8 @@ export class ChatComponent implements OnInit {
   }
 
   constructor(private tokenStorageService: TokenStorageService, private authService: AuthService,
-              private conversationService: ConversationService, private mesageService: MessageService) {
+              private conversationService: ConversationService, private mesageService: MessageService,
+              private userService: UserService, private chatService: ConversationService) {
   }
 
   ngOnInit(): void {
@@ -149,6 +154,7 @@ export class ChatComponent implements OnInit {
   getAllConversation(id: number, page: number, size: number): void {
     this.conversationService.getAllConversationByAccountId(id, {page: this.pageChat, size: this.sizeChat}).subscribe(data => {
       this.lstConversation = data;
+      console.log(this.lstConversation);
       this.sortMessageInEachConversation();
     }, error => {
       console.log(error);
@@ -248,6 +254,43 @@ export class ChatComponent implements OnInit {
       }
     }, error => {
       console.log(error);
+    });
+  }
+
+  getListFriendByUsername(key: string, request: Request): any {
+    this.userService.getListFriendByUsername(key.trim(), request).subscribe(data => {
+      this.listFriend = data;
+    }, error => {
+      console.log(error.messages);
+    });
+  }
+
+
+  selectFriend(item): void {
+    // do something with selected item
+    let lstPaticipants = [];
+    this.lstConversation.forEach(conv => {
+      lstPaticipants = conv.paticipants;
+      if (lstPaticipants.length == 2 && (lstPaticipants[0].id == item.id || lstPaticipants[1].id == item.id)) {
+        this.bindingChat(conv);
+      } else {
+//
+      }
+    });
+    console.log(item);
+  }
+
+  getListConvByName(keyI: string, pageI: number, sizeI: number): any {
+    const param = {
+      idUser: this.currentUser.id,
+      key: keyI.trim(),
+      page: pageI,
+      size: sizeI
+    };
+    this.chatService.getAllConversationByName(param).subscribe(data => {
+      this.listConvSearch = data;
+    }, error => {
+      console.log(error.messages);
     });
   }
 

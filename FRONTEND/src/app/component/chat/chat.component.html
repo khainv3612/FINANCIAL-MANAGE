@@ -25,25 +25,32 @@
               </span>
             <form class="search-contact" type="text" style="padding-left: 1%;width: 94%;display: inline-block">
               <!--              <input placeholder="Search..." class="form-control">-->
-              <ng-autocomplete placeholder="search"
-                               [data]="data"
-                               [searchKeyword]="keyword"
-                               (selected)='selectEvent($event)'
-                               (inputChanged)='onChangeSearch($event)'
-                               (inputFocused)='onFocused($event)'
+              <ng-autocomplete placeholder="Search friend" id="keysearch"
+                               [data]="listConvSearch"
+                               [searchKeyword]="keywordConv"
+                               (selected)='selectFriend($event)'
+                               (inputChanged)='getListConvByName($event,pageFriend,sizeFriend)'
+                               (inputFocused)='getListConvByName("",pageFriend,sizeFriend)'
                                [itemTemplate]="itemTemplate"
                                [notFoundTemplate]="notFoundTemplate">
               </ng-autocomplete>
 
               <ng-template #itemTemplate let-item>
-                <a [innerHTML]="item.name"></a>
+                <span style="padding-left: 10px">
+                <img src="assets/img/user/1.jpg" alt="User" class="wh-35 rounded-circle">
+                  </span>
+                <!--                <a [innerHTML]="item.username" style="display: inline-block;width:200px"></a>-->
+                <a [innerHTML]="item.conversationName" style="display: inline-block"></a>
+                <!--                <div>-->
+                <!--                </div>-->
+                <!--                <a>-->
+                <!--                </a>-->
               </ng-template>
 
-<!--              <span>-->
               <ng-template style="" #notFoundTemplate let-notFound>
                 <a [innerHTML]="notFound"></a>
               </ng-template>
-<!--                </span>-->
+              <!--                </span>-->
             </form>
 
             <!--            list conversation-->
@@ -54,7 +61,7 @@
                 <span class="status online"></span>
                 <div class="info">
                   <div class="name">{{conv.conversationName}}</div>
-                  <span id="message_preview_{{conv.conversationId}}">
+                  <span id="message_preview_{{conv.conversationId}}" *ngIf="conv.messages.length>0">
                   <p>{{conv.messages[conv.messages.length - 1].content}}</p>
                   <span class="date">Mar 1, 2019</span>
                     </span>

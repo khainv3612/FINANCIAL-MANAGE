@@ -11,6 +11,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
@@ -102,9 +103,36 @@ public class IAccountServiceImpl implements IAccountService {
     @Override
     public List<AccountDTO> getAll() {
         List<Account> list = repository.findAll();
+        return convertBoToDto(list);
+    }
+
+    @Override
+    public List<AccountDTO> findAllByUsernameContaining(String username, Pageable pageable) {
+        List<Account> list = repository.findAllByUsernameContaining(username.trim(), pageable);
         List<AccountDTO> result = new ArrayList<>();
         if (null != list && !list.isEmpty()) {
-            result = Arrays.asList(modelMapper.map(list, AccountDTO[].class));
+            AccountDTO dto = new AccountDTO();
+            for (Account bo : list) {
+                dto.setId(bo.getId());
+                dto.setUsername(bo.getUsername());
+                dto.setAvatar(bo.getAvatar());
+                result.add(dto);
+                dto = new AccountDTO();
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<AccountDTO> findAll(Pageable pageable) {
+        List<Account> list = repository.findAllByUsernameContaining("", pageable);
+        return convertBoToDto(list);
+    }
+
+    private List<AccountDTO> convertBoToDto(List<Account> bos) {
+        List<AccountDTO> result = new ArrayList<>();
+        if (null != bos && !bos.isEmpty()) {
+            result = Arrays.asList(modelMapper.map(bos, AccountDTO[].class));
 
         }
         return result;

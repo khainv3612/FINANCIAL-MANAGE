@@ -21,7 +21,9 @@ import java.util.Set;
         @NamedQuery(name = "Account.getPasswordSaltByUsername"
                 , query = "select a.passwordSalt from Account  a where a.username=:username"),
         @NamedQuery(name = "Account.updateStatus"
-                , query = "UPDATE Account a SET a.status =:statusId where a.id =:accountId")
+                , query = "UPDATE Account a SET a.status =:statusId where a.id =:accountId"),
+        @NamedQuery(name = "Account.getListByUsername"
+                , query = "Select a.id,a.username,a.avatar  from Account  a where a.username like :key")
 })
 @Getter
 @Setter
@@ -36,7 +38,7 @@ public class Account {
     @Size(max = 20)
     private String username;
 
-    @NotBlank
+//    @NotBlank
     @Size(max = 50)
     @Email
     private String email;
@@ -146,4 +148,9 @@ public class Account {
         this.status = status;
     }
 
+    public Account(Long id, @NotBlank @Size(max = 20) String username, String avatar) {
+        this.id = id;
+        this.username = username;
+        this.avatar = avatar;
+    }
 }

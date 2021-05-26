@@ -3,6 +3,7 @@ package com.finacial.service;
 import com.finacial.dto.ConversationDTO;
 import com.finacial.model.Account;
 import com.finacial.model.Conversation;
+import com.finacial.dto.ConversationSearchDto;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +18,8 @@ public interface IConversationService {
 
 
     List<Conversation> getAll();
+
     List<ConversationDTO> findAllByPaticipantsIs(Account account, int page, int size);
+
+    List<ConversationDTO> searchConversation(ConversationSearchDto dto);
 }

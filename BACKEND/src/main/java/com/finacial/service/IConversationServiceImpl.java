@@ -3,6 +3,7 @@ package com.finacial.service;
 import com.finacial.dto.ConversationDTO;
 import com.finacial.model.Account;
 import com.finacial.model.Conversation;
+import com.finacial.dto.ConversationSearchDto;
 import com.finacial.repository.ConversationRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Service("conversationService")
@@ -38,7 +37,18 @@ public class IConversationServiceImpl implements IConversationService {
     @Override
     public List<ConversationDTO> findAllByPaticipantsIs(Account account, int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("conversationId").descending());
-        List<Conversation> list = repository.findAllByPaticipantsIs(account, pageable);
+        List<Conversation> list = repository.findAllByPaticipantsContains(account, pageable);
+        return convertBoToDto(list);
+    }
+
+    @Override
+    public List<ConversationDTO> searchConversation(ConversationSearchDto dto) {
+        Pageable page = PageRequest.of(dto.getPage(), dto.getSize(), Sort.by("conversationId").descending());
+        List<Conversation> list = repository.findAllByPaticipantsContainsAndConversationNameContains(new Account(dto.getIdUser()), dto.getKey(), page);
+        return convertBoToDto(list);
+    }
+
+    private List<ConversationDTO> convertBoToDto(List<Conversation> list) {
         List<ConversationDTO> result = new ArrayList<>();
         if (null != list) {
             result = Arrays.asList(modelMapper.map(list, ConversationDTO[].class));

@@ -3750,6 +3750,7 @@ textarea.form-control {
 
 .mail-item-nav .nav-pills .nav-link .info {
   padding-left: 40px;
+  height: 25px;
 }
 
 .mail-item-nav .nav-pills .nav-link .info .name {

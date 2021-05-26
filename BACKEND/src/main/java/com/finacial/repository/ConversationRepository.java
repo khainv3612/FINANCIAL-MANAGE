@@ -11,5 +11,8 @@ import java.util.List;
 @Repository
 public interface ConversationRepository extends JpaRepository<Conversation, Long> {
     List<Conversation> findAll();
-    List<Conversation> findAllByPaticipantsIs(Account account, Pageable pageable);
+
+    List<Conversation> findAllByPaticipantsContains(Account account, Pageable pageable);
+
+    List<Conversation> findAllByPaticipantsContainsAndConversationNameContains(Account account, String name, Pageable pageable);
 }

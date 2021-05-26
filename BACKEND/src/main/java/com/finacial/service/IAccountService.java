@@ -4,6 +4,7 @@ import com.finacial.dto.AccountDTO;
 import com.finacial.model.Account;
 import com.finacial.model.Status;
 import com.finacial.model.VerificationToken;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,4 +22,8 @@ public interface IAccountService {
     void activeAccount(Long accId);
 
     List<AccountDTO> getAll();
+
+    List<AccountDTO> findAllByUsernameContaining(String username, Pageable pageable);
+
+    List<AccountDTO> findAll(Pageable pageable);
 }

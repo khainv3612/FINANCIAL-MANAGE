@@ -1,10 +1,8 @@
 package com.finacial.controller;
 
-import com.finacial.dto.ApplicationStats;
-import com.finacial.dto.ConversationDTO;
-import com.finacial.dto.MessageDTO;
-import com.finacial.dto.RequestDto;
+import com.finacial.dto.*;
 import com.finacial.model.Account;
+import com.finacial.dto.ConversationSearchDto;
 import com.finacial.repository.AccountRepository;
 import com.finacial.service.IConversationService;
 import com.finacial.service.IMessageService;
@@ -77,6 +75,12 @@ public class ChatController {
     public ResponseEntity<List<ConversationDTO>> getAllConversationByIdAccount(@PathVariable("id") Long id, @RequestBody RequestDto requestDto) {
         List<ConversationDTO> list = conversationService.findAllByPaticipantsIs(new Account(id), requestDto.getPage(), requestDto.getSize());
         return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @PostMapping("/api/get_chats")
+    public ResponseEntity<List<ConversationDTO>> getListUserByUsername(@RequestBody ConversationSearchDto requestDto) {
+        List<ConversationDTO> result = conversationService.searchConversation(requestDto);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
 
