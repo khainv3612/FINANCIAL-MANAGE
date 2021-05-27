@@ -24,12 +24,13 @@ import {ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angu
 import {NgxLoadingModule} from 'ngx-loading';
 import {SocialLoginModule, SocialAuthServiceConfig} from 'angularx-social-login';
 import {GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
-import {ChatComponent} from './component/chat/chat.component';
+import {ChatComponent} from './component/chat-component/chat/chat.component';
 import {PickerModule} from '@ctrl/ngx-emoji-mart';
 import {FeatherModule} from 'angular-feather';
 import {IconsModule} from './directive/ icon.module';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { NewChatComponent } from './component/chat-component/new-chat/new-chat.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     ErrorPageComponent,
     RegisterExpiredComponent,
     ChatComponent,
+    NewChatComponent,
   ],
   imports: [
     BrowserModule,

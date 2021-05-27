@@ -3,16 +3,20 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 
 import {$} from 'protractor';
-import {User} from '../../model/User';
-import {AuthService} from '../../service/auth.service';
-import {TokenStorageService} from '../../service/token-storage.service';
-import {ConversationService} from '../../service/ConversationService';
-import {Conversation} from '../../model/Conversation';
-import {Message} from '../../model/Message';
-import {environment} from '../../../environments/environment';
-import {MessageService} from '../../service/MessageService';
-import {UserService} from '../../service/user.service';
-import {Request} from '../../model/Request';
+import {User} from '../../../model/User';
+import {AuthService} from '../../../service/auth.service';
+import {TokenStorageService} from '../../../service/token-storage.service';
+import {ConversationService} from '../../../service/ConversationService';
+import {Conversation} from '../../../model/Conversation';
+import {Message} from '../../../model/Message';
+import {environment} from '../../../../environments/environment';
+import {MessageService} from '../../../service/MessageService';
+import {UserService} from '../../../service/user.service';
+import {Request} from '../../../model/Request';
+import {MatDialog} from '@angular/material/dialog';
+import {LoginComponent} from '../../auth/login/login.component';
+import {RegisterComponent} from '../../auth/register/register.component';
+import {NewChatComponent} from '../new-chat/new-chat.component';
 
 @Component({
   selector: 'app-chat',
@@ -72,7 +76,7 @@ export class ChatComponent implements OnInit {
 
   constructor(private tokenStorageService: TokenStorageService, private authService: AuthService,
               private conversationService: ConversationService, private mesageService: MessageService,
-              private userService: UserService, private chatService: ConversationService) {
+              private userService: UserService, private chatService: ConversationService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -251,6 +255,8 @@ export class ChatComponent implements OnInit {
       if (data.length) {
         const result = Object.assign([], data);
         this.currentConversation.messages = result.concat(this.currentConversation.messages);
+      } else {
+        this.isLoadedAllMessage = true;
       }
     }, error => {
       console.log(error);
@@ -293,5 +299,21 @@ export class ChatComponent implements OnInit {
       console.log(error.messages);
     });
   }
+
+  // popup create new chat
+  openPopupNewChat(): void {
+    const popup = this.dialog.open(NewChatComponent, {
+      width: '60%',
+      height: '65%',
+      data: {},
+      position: {top: '5%'},
+      panelClass: 'popup-new-chat'
+    });
+
+    popup.afterClosed().subscribe(result => {
+// code
+    });
+  }
+
 
 }

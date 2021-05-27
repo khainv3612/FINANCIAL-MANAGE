@@ -5453,3 +5453,10 @@ textarea.form-control {
   font-weight: bold;
   font-size: 15px;
 }
+
+.popup-new-chat > mat-dialog-container {
+  background: whitesmoke;
+  /*box-shadow: none;*/
+  color: unset;
+}
+

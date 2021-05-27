@@ -10,7 +10,7 @@ import {RegisterSuccesComponent} from '../../auth/register-succes/register-succe
 import {ErrorPageComponent} from '../../auth/error-page/error-page.component';
 import {RegisterExpiredComponent} from '../../auth/register-expired/register-expired.component';
 import {Role} from '../../../model/Role';
-import {ChatComponent} from '../../chat/chat.component';
+import {ChatComponent} from '../../chat-component/chat/chat.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
