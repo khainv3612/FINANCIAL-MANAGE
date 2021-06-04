@@ -10,6 +10,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
+import {TextFieldModule} from '@angular/cdk/text-field';
+
 
 const matModules = [
   MatDialogModule,
@@ -22,7 +24,8 @@ const matModules = [
   MatFormFieldModule,
   MatInputModule,
   MatAutocompleteModule,
-  MatTabsModule
+  MatTabsModule,
+  TextFieldModule
 ];
 
 @NgModule({

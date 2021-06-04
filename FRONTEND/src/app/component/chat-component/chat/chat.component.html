@@ -28,7 +28,7 @@
               <ng-autocomplete placeholder="Search chat" id="keysearch"
                                [data]="listConvSearch"
                                [searchKeyword]="keywordConv"
-                               (selected)='selectFriend($event)'
+                               (selected)='selectConversation($event)'
                                (inputChanged)='getListConvByName($event,pageFriend,sizeFriend)'
                                (inputFocused)='getListConvByName("",pageFriend,sizeFriend)'
                                [itemTemplate]="itemTemplate"
@@ -61,7 +61,7 @@
                 <span class="status online"></span>
                 <div class="info">
                   <div class="name">{{conv.conversationName}}</div>
-                  <span id="message_preview_{{conv.conversationId}}" *ngIf="conv.messages.length>0">
+                  <span id="message_preview_{{conv.conversationId}}" *ngIf="conv.messages && conv.messages.length>0">
                   <p>{{conv.messages[conv.messages.length - 1].content}}</p>
                   <span class="date">Mar 1, 2019</span>
                     </span>

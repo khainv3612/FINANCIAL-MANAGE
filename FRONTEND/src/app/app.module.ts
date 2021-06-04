@@ -13,7 +13,7 @@ import {SettingThemeComponent} from './component/nav-footer/setting-theme/settin
 import {LoginComponent} from './component/auth/login/login.component';
 import {RegisterComponent} from './component/auth/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthGuardService} from './service/auth-guard.service';
 import {JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
 import {TaskBarComponent} from './component/nav-footer/task-bar/task-bar.component';
@@ -31,6 +31,7 @@ import {IconsModule} from './directive/ icon.module';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { NewChatComponent } from './component/chat-component/new-chat/new-chat.component';
+import {AuthInterceptor} from './Interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,14 @@ import { NewChatComponent } from './component/chat-component/new-chat/new-chat.c
     AutocompleteLibModule
   ],
   providers: [AuthGuardService, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
+    {
+      provide: HTTP_INTERCEPTORS,
+
+      useClass: AuthInterceptor,
+
+      multi: true
+
+    },
     JwtHelperService,
     {
       provide: 'SocialAuthServiceConfig',

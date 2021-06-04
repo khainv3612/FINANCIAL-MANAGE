@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-
-import {$} from 'protractor';
 import {User} from '../../../model/User';
 import {AuthService} from '../../../service/auth.service';
 import {TokenStorageService} from '../../../service/token-storage.service';
@@ -12,10 +10,7 @@ import {Message} from '../../../model/Message';
 import {environment} from '../../../../environments/environment';
 import {MessageService} from '../../../service/MessageService';
 import {UserService} from '../../../service/user.service';
-import {Request} from '../../../model/Request';
 import {MatDialog} from '@angular/material/dialog';
-import {LoginComponent} from '../../auth/login/login.component';
-import {RegisterComponent} from '../../auth/register/register.component';
 import {NewChatComponent} from '../new-chat/new-chat.component';
 
 @Component({
@@ -47,16 +42,6 @@ export class ChatComponent implements OnInit {
 
   listFriend: User[];
   listConvSearch: Conversation[];
-  data = [
-    {
-      id: 1,
-      name: 'Usa'
-    },
-    {
-      id: 2,
-      name: 'England'
-    }
-  ];
 
   onChangeSearch(val: string): void {
     // fetch remote data from here
@@ -100,8 +85,12 @@ export class ChatComponent implements OnInit {
     this.stompClient = Stomp.over(socket);
 
     this.stompClient.connect({}, () => {
-      this.stompClient.subscribe('/topic/public', (message) => {
-        const result = JSON.parse(message.body);
+      this.stompClient.subscribe('/topic/public', (data) => {
+        const result = JSON.parse(data.body);
+        if (null != result.conversationId) {
+          this.lstConversation = [Object.assign([], result)].concat(this.lstConversation);
+          return;
+        }
         if (this.currentUser.id == result.createId) {
           this.currentConversation.messages.push(result);
           setTimeout(this.scrollMessToEnd, 5);
@@ -139,12 +128,13 @@ export class ChatComponent implements OnInit {
         conversation: {conversationId: this.currentConversation.conversationId},
         type: 'JOIN'
       })
-    );
+    ).then;
     this.content = '';
   }
 
 
   createNewConversation(conversationNamestr: string, paticipantslst: User[]): any {
+
     this.stompClient.send(
       '/app/chat.chanel',
       {},
@@ -263,14 +253,6 @@ export class ChatComponent implements OnInit {
     });
   }
 
-  getListFriendByUsername(key: string, request: Request): any {
-    this.userService.getListFriendByUsername(key.trim(), request).subscribe(data => {
-      this.listFriend = data;
-    }, error => {
-      console.log(error.messages);
-    });
-  }
-
 
   selectFriend(item): void {
     // do something with selected item
@@ -283,7 +265,10 @@ export class ChatComponent implements OnInit {
 //
       }
     });
-    console.log(item);
+  }
+
+  selectConversation(item): void {
+    this.bindingChat(item);
   }
 
   getListConvByName(keyI: string, pageI: number, sizeI: number): any {
@@ -303,8 +288,8 @@ export class ChatComponent implements OnInit {
   // popup create new chat
   openPopupNewChat(): void {
     const popup = this.dialog.open(NewChatComponent, {
-      width: '60%',
-      height: '65%',
+      width: '40%',
+      height: '60%',
       data: {},
       position: {top: '5%'},
       panelClass: 'popup-new-chat'
@@ -312,6 +297,12 @@ export class ChatComponent implements OnInit {
 
     popup.afterClosed().subscribe(result => {
 // code
+      const userTemp = {
+        id: this.currentUser.id,
+        username: this.currentUser.username
+      };
+      result.paticipants.push(userTemp);
+      this.createNewConversation(result.conversationName, result.paticipants);
     });
   }
 
