@@ -30,8 +30,53 @@ import {FeatherModule} from 'angular-feather';
 import {IconsModule} from './directive/ icon.module';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
-import { NewChatComponent } from './component/chat-component/new-chat/new-chat.component';
+import {NewChatComponent} from './component/chat-component/new-chat/new-chat.component';
 import {AuthInterceptor} from './Interceptor/auth.interceptor';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatTreeModule} from '@angular/material/tree';
+import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModule} from '@angular/material/checkbox';
+import {NotifierModule, NotifierOptions} from 'angular-notifier';
+
+const customNotifierOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'right',
+      distance: 12
+    },
+    vertical: {
+      position: 'top',
+      distance: 12,
+      gap: 10
+    }
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
 
 @NgModule({
   declarations: [
@@ -51,6 +96,7 @@ import {AuthInterceptor} from './Interceptor/auth.interceptor';
     NewChatComponent,
   ],
   imports: [
+    NotifierModule.withConfig(customNotifierOptions),
     BrowserModule,
     RouterRoutingModule,
     BrowserAnimationsModule,
@@ -63,7 +109,10 @@ import {AuthInterceptor} from './Interceptor/auth.interceptor';
     PickerModule,
     IconsModule,
     InfiniteScrollModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    MatRadioModule,
+    MatTreeModule,
+    MatCheckboxModule
   ],
   providers: [AuthGuardService, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     {
@@ -91,7 +140,8 @@ import {AuthInterceptor} from './Interceptor/auth.interceptor';
             provider: new FacebookLoginProvider(
               '1071643186574715'
             )
-          }
+          },
+          {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: {clickAction: 'noop'} as MatCheckboxDefaultOptions}
         ]
       } as SocialAuthServiceConfig,
     }],

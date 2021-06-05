@@ -74,6 +74,7 @@ public class ChatController {
     @PostMapping("/api/get_chat/{id}")
     public ResponseEntity<List<ConversationDTO>> getAllConversationByIdAccount(@PathVariable("id") Long id, @RequestBody RequestDto requestDto) {
         List<ConversationDTO> list = conversationService.findAllByPaticipantsIs(new Account(id), requestDto.getPage(), requestDto.getSize());
+
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 

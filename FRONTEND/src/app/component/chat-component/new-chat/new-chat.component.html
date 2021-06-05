@@ -22,7 +22,7 @@
 
                   <div>
                     <div class="flex-column nav nav-pills" role="tablist" *ngIf="listFriend && listFriend.length>0">
-                      <a class="nav-link active cursor-pointer" (click)="selectUser(user)" data-toggle="pill"
+                      <a class="nav-link active cursor-pointer" (click)="selectUser(user)"
                          *ngFor="let user of listFriend">
                         <img src="../../../../assets/img/user/1.jpg" alt="User" class="wh-30 rounded-circle">
                         <span class="status online"></span>
@@ -55,10 +55,13 @@
       </ng-template>
 
       <form class="search-contact">
-        <mat-form-field>
+        <mat-form-field style="display: inline-block">
           <mat-label style="color: blue">Group name</mat-label>
           <input matInput [(ngModel)]="groupName" [ngModelOptions]="{standalone: true}" style="width: 500%">
         </mat-form-field>
+        <button type="button" class="btn btn-primary btn-sm" style="display: inline-block;float: right"
+                (click)="createNewGroup()">Create
+        </button>
         <input placeholder="Search..." type="text" [ngModelOptions]="{standalone: true}"
                [(ngModel)]="keySearch" (input)="getListFriendByUsername()" class="form-control">
       </form>
@@ -73,16 +76,22 @@
                 <div class="mail-item-nav">
 
                   <div>
-                    <div class="flex-column nav nav-pills" role="tablist" *ngIf="listFriend && listFriend.length>0">
-                      <a class="nav-link active cursor-pointer" (click)="selectUser(user)" data-toggle="pill"
-                         *ngFor="let user of listFriend">
+                    <div class="flex-column nav nav-pills" *ngIf="listFriend && listFriend.length>0">
+
+                      <span class="nav-link active cursor-pointer"
+                            *ngFor="let user of listFriend">
                         <img src="../../../../assets/img/user/1.jpg" alt="User" class="wh-30 rounded-circle">
                         <span class="status online"></span>
-                        <div class="info">
+                        <div class="info" style="display: inline-block">
                           <div class="name">{{user.username}}</div>
-                          <span class="date">Mar 1, 2019</span>
                         </div>
-                      </a>
+                        <div style="display: inline-block;float: right">
+
+                         <input type="checkbox" (click)="chooseUser('user_'+user.id,user)"
+                                style="display: inline-block" name="user_{{user.id}}"
+                                id="user_{{user.id}}" [checked]="lstIdChoose&&lstIdChoose.includes('user_'+user.id)">
+                        </div>
+                      </span>
                     </div>
                   </div>
                   <div id="no_result" *ngIf="listFriend && listFriend.length==0">
@@ -100,3 +109,4 @@
     </div>
   </mat-tab>
 </mat-tab-group>
+

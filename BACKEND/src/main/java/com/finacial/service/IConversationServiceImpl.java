@@ -44,7 +44,7 @@ public class IConversationServiceImpl implements IConversationService {
     @Override
     public List<ConversationDTO> searchConversation(ConversationSearchDto dto) {
         Pageable page = PageRequest.of(dto.getPage(), dto.getSize(), Sort.by("conversationId").descending());
-        List<Conversation> list = repository.findAllByPaticipantsContainsAndConversationNameContains(new Account(dto.getIdUser()), dto.getKey(), page);
+        List<Conversation> list = repository.findAllByPaticipantsContainsAndConversationNameContains(new Account(dto.getIdUser()), dto.getKey().trim(), page);
         return convertBoToDto(list);
     }
 

@@ -302,6 +302,7 @@ export class ChatComponent implements OnInit {
         username: this.currentUser.username
       };
       result.paticipants.push(userTemp);
+      console.log(result.paticipants);
       this.createNewConversation(result.conversationName, result.paticipants);
     });
   }

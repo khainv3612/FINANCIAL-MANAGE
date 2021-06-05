@@ -26,4 +26,6 @@ public interface IAccountService {
     List<AccountDTO> findAllByUsernameContaining(String username, Pageable pageable);
 
     List<AccountDTO> findAll(Pageable pageable);
+
+    AccountDTO getCurrentUser();
 }

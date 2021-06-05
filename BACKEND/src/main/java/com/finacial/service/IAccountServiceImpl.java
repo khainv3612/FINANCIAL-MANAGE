@@ -7,11 +7,13 @@ import com.finacial.model.Status;
 import com.finacial.model.VerificationToken;
 import com.finacial.repository.AccountRepository;
 import com.finacial.repository.VerificationTokenRepository;
+import com.finacial.security.service.UserDetailsImpl;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
@@ -113,6 +115,9 @@ public class IAccountServiceImpl implements IAccountService {
         if (null != list && !list.isEmpty()) {
             AccountDTO dto = new AccountDTO();
             for (Account bo : list) {
+                if (bo.getId().equals(getCurrentUser().getId())) {
+                    continue;
+                }
                 dto.setId(bo.getId());
                 dto.setUsername(bo.getUsername());
                 dto.setAvatar(bo.getAvatar());
@@ -127,6 +132,15 @@ public class IAccountServiceImpl implements IAccountService {
     public List<AccountDTO> findAll(Pageable pageable) {
         List<Account> list = repository.findAllByUsernameContaining("", pageable);
         return convertBoToDto(list);
+    }
+
+    @Override
+    public AccountDTO getCurrentUser() {
+        UserDetailsImpl userPrincipal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        AccountDTO dto = new AccountDTO();
+        dto.setId(userPrincipal.getId());
+        dto.setUsername(userPrincipal.getUsername());
+        return dto;
     }
 
     private List<AccountDTO> convertBoToDto(List<Account> bos) {
