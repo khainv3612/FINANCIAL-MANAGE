@@ -21,6 +21,7 @@ public class IMessageServiceImpl implements IMessageService {
 
     @Override
     public Message saveMessage(MessageDTO messageDTO) {
+        messageDTO.setCreatedDate(new Date());
         Message bo = modelMapper.map(messageDTO, Message.class);
         bo.setCreatedDate(new Date());
         return repository.save(bo);

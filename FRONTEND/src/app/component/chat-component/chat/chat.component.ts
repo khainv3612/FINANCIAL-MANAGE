@@ -148,7 +148,6 @@ export class ChatComponent implements OnInit {
   getAllConversation(id: number, page: number, size: number): void {
     this.conversationService.getAllConversationByAccountId(id, {page: this.pageChat, size: this.sizeChat}).subscribe(data => {
       this.lstConversation = data;
-      console.log(this.lstConversation);
       this.sortMessageInEachConversation();
     }, error => {
       console.log(error);
@@ -163,6 +162,12 @@ export class ChatComponent implements OnInit {
 
     this.notifyNewMessage(conv.conversationId, true);
     this.showMessage();
+  }
+
+  showConversationName(conv: Conversation): void {
+    if (conv.paticipants.length == 2) {
+      conv.conversationName = conv.paticipants[0].id == this.currentUser.id ? conv.paticipants[1].username : conv.paticipants[0].username;
+    }
   }
 
 
@@ -201,6 +206,7 @@ export class ChatComponent implements OnInit {
       return;
     }
     this.lstConversation.forEach(conv => {
+      this.showConversationName(conv);
       if (null != conv.messages && conv.messages.length > 0) {
         this.sortMessage(conv.messages);
       }
@@ -297,15 +303,26 @@ export class ChatComponent implements OnInit {
 
     popup.afterClosed().subscribe(result => {
 // code
-      const userTemp = {
-        id: this.currentUser.id,
-        username: this.currentUser.username
-      };
-      result.paticipants.push(userTemp);
-      console.log(result.paticipants);
-      this.createNewConversation(result.conversationName, result.paticipants);
-    });
+        if (result.paticipants.length == 1) {
+          result.conversationName += '-' + this.currentUser.username;
+          let lstPaticipants = [];
+          this.lstConversation.forEach(conv => {
+            lstPaticipants = conv.paticipants;
+            if (lstPaticipants.length == 2 &&
+              (lstPaticipants[0].id == result.paticipants[0].id || lstPaticipants[1].id == result.paticipants[0].id)) {
+              this.bindingChat(conv);
+              return;
+            }
+          });
+        }
+        const userTemp = {
+          id: this.currentUser.id,
+          username: this.currentUser.username
+        };
+        result.paticipants.push(userTemp);
+        this.createNewConversation(result.conversationName, result.paticipants);
+      }
+    );
   }
-
 
 }

@@ -3965,7 +3965,10 @@ textarea.form-control {
 .chat-list-right {
   position: relative;
   margin-right: 0px;
-  /*padding-right: 0px;*/
+  padding-right: 0px;
+  float: right;
+  display: block;
+  clear: both;
   /*width: fit-content;*/
   margin-bottom: 20px;
 }
@@ -4013,6 +4016,9 @@ textarea.form-control {
   position: relative;
   padding-left: 60px;
   margin-bottom: 20px;
+  display: block;
+  clear: both;
+  width: fit-content;
 }
 
 .chat-list-left > img {
@@ -4024,7 +4030,8 @@ textarea.form-control {
 .chat-list-left .chat-details {
   background: #ededed;
   position: relative;
-  padding: 20px 20px 10px;
+  padding: 20px 10px 10px;
+  margin-left: 0px;
   border-radius: 0px 10px 10px 10px;
 }
 

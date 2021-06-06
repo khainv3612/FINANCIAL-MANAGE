@@ -57,7 +57,7 @@
 
             <!--            list conversation-->
             <div class="flex-column nav nav-pills" role="tablist">
-              <a class="nav-link active cursor-pointer" (click)="bindingChat(conv)" data-toggle="pill"
+              <a class="nav-link active cursor-pointer" (click)="bindingChat(conv)"
                  *ngFor="let conv of lstConversation">
                 <img src="../../../../assets/img/user/1.jpg" alt="User" class="wh-30 rounded-circle">
                 <span class="status online"></span>
@@ -65,7 +65,7 @@
                   <div class="name">{{conv.conversationName}}</div>
                   <span id="message_preview_{{conv.conversationId}}" *ngIf="conv.messages && conv.messages.length>0">
                   <p>{{conv.messages[conv.messages.length - 1].content}}</p>
-                  <span class="date">Mar 1, 2019</span>
+                  <span class="date">{{conv.messages[conv.messages.length - 1].createdDate|date}}</span>
                     </span>
                 </div>
               </a>
@@ -94,20 +94,20 @@
                   <div *ngFor="let mess of currentConversation.messages">
                     <!--//owner message-->
                     <div *ngIf="mess.createId==currentUser.id" class="chat-list-right">
+                      <ng-template #date>{{mess.createdDate|dateMssPipe:0: 'dd/MM/yyyy hh:mm'}}</ng-template>
                       <!--                      <img src="assets/img/user/1.jpg" alt="User" class="wh-40 rounded-circle">-->
-                      <div class="chat-details">
+                      <div class="chat-details" [ngbTooltip]="date" [placement]="'left'">
                         <div class="name">{{mess.createdName}}</div>
                         <p>{{mess.content}}</p>
-                        <span class="date">{{mess.createdDate}}</span>
                       </div>
                     </div>
                     <!--other user message-->
                     <div *ngIf="mess.createId!=currentUser.id" class="chat-list-left">
+                      <ng-template #date>{{mess.createdDate|dateMssPipe:0: 'dd/MM/yyyy hh:mm'}}</ng-template>
                       <img src="../../../../assets/img/user/2.jpg" alt="User" class="wh-40 mr-2 rounded-circle">
-                      <div class="chat-details">
+                      <div class="chat-details" [ngbTooltip]="date" [placement]="'right'">
                         <div class="name">{{mess.createdName}}</div>
                         <p [innerHTML]="mess.content"></p>
-                        <span class="date">{{mess.createdDate}}</span>
                       </div>
                     </div>
                   </div>

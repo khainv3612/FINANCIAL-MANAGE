@@ -36,6 +36,10 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatTreeModule} from '@angular/material/tree';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModule} from '@angular/material/checkbox';
 import {NotifierModule, NotifierOptions} from 'angular-notifier';
+import {DateMessPipe} from './directive/DateMessPipe';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {TooltipModule} from 'angular-bootstrap-md';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -94,6 +98,7 @@ const customNotifierOptions: NotifierOptions = {
     RegisterExpiredComponent,
     ChatComponent,
     NewChatComponent,
+    DateMessPipe,
   ],
   imports: [
     NotifierModule.withConfig(customNotifierOptions),
@@ -112,7 +117,10 @@ const customNotifierOptions: NotifierOptions = {
     AutocompleteLibModule,
     MatRadioModule,
     MatTreeModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTooltipModule,
+    TooltipModule,
+    NgbModule
   ],
   providers: [AuthGuardService, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     {

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Service("conversationService")
@@ -25,6 +26,7 @@ public class IConversationServiceImpl implements IConversationService {
 
     @Override
     public Conversation createNewConversation(ConversationDTO dto) {
+        dto.setCreateDate(new Date());
         Conversation bo = modelMapper.map(dto, Conversation.class);
         return repository.save(bo);
     }
