@@ -63,8 +63,9 @@
                 <span class="status online"></span>
                 <div class="info">
                   <div class="name">{{conv.conversationName}}</div>
-                  <span id="message_preview_{{conv.conversationId}}" *ngIf="conv.messages && conv.messages.length>0">
-                  <p>{{conv.messages[conv.messages.length - 1].content}}</p>
+                  <span style=" width: 20em;" id="message_preview_{{conv.conversationId}}"
+                        *ngIf="conv.messages && conv.messages.length>0">
+                  <p class="text-overflow">{{conv.messages[conv.messages.length - 1].content}}</p>
                   <span class="date">{{conv.messages[conv.messages.length - 1].createdDate|date}}</span>
                     </span>
                 </div>

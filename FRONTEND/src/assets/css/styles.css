@@ -5467,3 +5467,9 @@ textarea.form-control {
   color: unset;
 }
 
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
